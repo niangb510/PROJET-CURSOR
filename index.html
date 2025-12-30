@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>N'BAYE NIANG - CV Dynamique</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+        <link rel="stylesheet" href="style.css">
+    </head>
+<body>
+
+    <button id="dark-mode-toggle" class="btn dark-mode-toggle-btn" title="Toggle dark mode">
+        <i class="fas fa-moon"></i> 
+    </button>
+    
+    <div class="main-container">
+        
+        <!-- HEADER / PROFIL -->
+        <header class="profile-section">
+            <div class="profile-content">
+                <div class="profile-image-container">
+                    <img src="image_profil.png" alt="Profile Picture" class="profile-image">
+                </div>
+                <div class="profile-details">
+                    <h1>N'BAYE NIANG</h1>
+                    <h2>Étudiant en Informatique à Epitech Moulins</h2>
+                </div>
+            </div>
+        </header>
+
+        <!-- NAVIGATION -->
+        <nav class="quick-nav">
+            <a href="#experience" class="btn secondary-btn">Expérience</a>
+            <a href="#education" class="btn secondary-btn">Formation</a>
+            <a href="#skills" class="btn secondary-btn">Compétences</a>
+            <a href="edit.html" class="btn primary-btn" style="margin-left: 20px;">
+                <i class="fas fa-edit"></i> MODE ÉDITION
+            </a>
+        </nav>
+
+        <!-- 1. SECTION EXPERIENCE -->
+        <section class="experience-section tab-content" id="experience">
+            <h3 class="animated-rainbow-line">Expérience Professionnelle 
+                <button class="toggle-btn" data-target="experience-list"><i class="fas fa-minus-circle"></i></button>
+            </h3>
+            
+            <div id="experience-list" class="content-list">
+                <article class="job-entry">
+                    <h4>Vente de téléphones (Retail)</h4>
+                    <p class="details">
+                        2023-10-01 to 2025-06-30 | Privé, Ouagadougou, CT, Burkina Faso
+                    </p>
+                </article>
+                <article class="job-entry">
+                    <h4>Opérateur de saisie</h4>
+                    <p class="details">
+                        2022-04-01 to 2022-09-30 | Bolloré Transport et logistique Burkina, Ouagadougou
+                    </p>
+                </article>
+                <article class="job-entry">
+                    <h4>Coordinateur de transport</h4>
+                    <p class="details">
+                        2016-11-01 to 2017-09-30 | SDF International, Ouagadougou, CT, Burkina Faso
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <!-- 2. SECTION EDUCATION -->
+        <section class="education-section tab-content" id="education">
+            <h3 class="animated-rainbow-line">Diplômes et Formations
+                <button class="toggle-btn" data-target="education-list"><i class="fas fa-minus-circle"></i></button>
+            </h3>
+            
+            <div id="education-list" class="content-list">
+                <article class="degree-entry">
+                    <h4>BACHELOR OF COMPUTER SCIENCE</h4>
+                    <p class="details">
+                        2025-09-01 to 2026-06-30 | EPITECH Moulins
+                    </p>
+                </article>
+            </div>
+        </section>
+        
+        <!-- 3. SECTION SKILLS -->
+        <section class="skills-section tab-content" id="skills">
+            <h3 class="animated-rainbow-line">Compétences et Atouts
+                <button class="toggle-btn" data-target="skills-list"><i class="fas fa-minus-circle"></i></button>
+            </h3>
+            
+            <div id="skills-list" class="content-list">
+                <div class="skill-category">
+                    <h4>Compétences Techniques et Personnelles</h4>
+                    <ul>
+                        <li>Développement Web (HTML, CSS, JS)</li>
+                        <li>Gestion de projet</li>
+                        <li>Logistique et Transport</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 4. SECTION CONTACT -->
+        <section class="info-personnelles-section tab-content" id="info-personnelles">
+            <h3 class="animated-rainbow-line">Informations Personnelles et Contact</h3>
+            <div class="contact-details-box">
+                <h4>Coordonnées</h4>
+                <p><strong>Téléphone:</strong> 0615897026</p>
+                <p><strong>Email:</strong> <a href="mailto:niangaffou@gmail.com">niangaffou@gmail.com</a></p>
+            </div>
+        </section>
+        
+    </div> 
+    <script src="script.js"></script>
+</body>
+</html>

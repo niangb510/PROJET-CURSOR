@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Édition CV - N'BAYE NIANG</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="main-container">
+
+        <nav class="quick-nav">
+            <a href="index.html" class="btn secondary-btn">
+                <i class="fas fa-eye"></i> Mode Vue
+            </a>
+            <a href="#experience-add-form" class="btn secondary-btn btn-add">
+                <i class="fas fa-plus"></i> Ajouter Expérience
+            </a>
+        </nav>
+
+        <div
+            style="background-color: #fff3cd; color: #856404; padding: 15px; border-radius: 5px; margin: 20px 0; text-align: center; border: 1px solid #ffeeba;">
+            <i class="fas fa-exclamation-triangle"></i> <strong>Note :</strong> Cette version est hébergée sur Netlify
+            (statique). Les modifications effectuées ici ne seront pas sauvegardées de manière permanente car il n'y a
+            pas de base de données active.
+        </div>
+
+        <h1 style="text-align: center; color: #5AC8C5; margin-top: 40px;">ÉDITION DU CV de N'BAYE NIANG</h1>
+
+        <section id="experience-add-form" class="edit-form-container">
+            <h3 class="animated-rainbow-line">Ajouter une Expérience</h3>
+            <form
+                onsubmit="alert('Cette fonctionnalité nécessite un backend. Sur Netlify, vous devriez utiliser une API ou une base de données externe.'); return false;">
+                <div class="form-group"><label>Titre:</label><input type="text" name="name" required></div>
+                <div class="form-group"><label>Description:</label><textarea name="description"></textarea></div>
+                <div class="form-group"><label>Date début:</label><input type="date" name="startdate" required></div>
+                <div class="form-group"><label>Date fin:</label><input type="date" name="enddate"></div>
+                <button type="submit" class="btn primary-btn btn-add"><i class="fas fa-plus"></i> Ajouter</button>
+            </form>
+        </section>
+
+        <section class="edit-form-container">
+            <h3 class="animated-rainbow-line">Modifier / Supprimer les Expériences Existantes</h3>
+
+            <div class="crud-item">
+                <h4>Vente de téléphones (Retail)</h4>
+                <form onsubmit="alert('Action non disponible en version statique.'); return false;">
+                    <div class="form-group"><label>Titre:</label><input type="text" name="name"
+                            value="Vente de téléphones (Retail)" required></div>
+                    <div class="form-group"><label>Description:</label><textarea
+                            name="description">Privé, Ouagadougou, CT, Burkina Faso</textarea></div>
+                    <div class="form-group"><label>Date début:</label><input type="date" name="startdate"
+                            value="2023-10-01" required></div>
+                    <div class="form-group"><label>Date fin:</label><input type="date" name="enddate"
+                            value="2025-06-30"></div>
+
+                    <div class="crud-actions">
+                        <button type="submit" class="btn-update"><i class="fas fa-save"></i> Modifier</button>
+                        <button type="button" class="btn-delete"
+                            onclick="alert('Action non disponible en version statique.');"><i class="fas fa-trash"></i>
+                            Supprimer</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="crud-item">
+                <h4>Opérateur de saisie</h4>
+                <form onsubmit="alert('Action non disponible en version statique.'); return false;">
+                    <div class="form-group"><label>Titre:</label><input type="text" name="name"
+                            value="Opérateur de saisie" required></div>
+                    <div class="form-group"><label>Description:</label><textarea
+                            name="description">Bolloré Transport et logistique Burkina, Ouagadougou</textarea></div>
+                    <div class="form-group"><label>Date début:</label><input type="date" name="startdate"
+                            value="2022-04-01" required></div>
+                    <div class="form-group"><label>Date fin:</label><input type="date" name="enddate"
+                            value="2022-09-30"></div>
+
+                    <div class="crud-actions">
+                        <button type="submit" class="btn-update"><i class="fas fa-save"></i> Modifier</button>
+                        <button type="button" class="btn-delete"
+                            onclick="alert('Action non disponible en version statique.');"><i class="fas fa-trash"></i>
+                            Supprimer</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

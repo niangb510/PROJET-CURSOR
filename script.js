@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     const toggleButtons = document.querySelectorAll('.toggle-btn');
-    
+
     toggleButtons.forEach(button => {
         button.addEventListener('click', () => {
             const targetId = button.getAttribute('data-target');
@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 icon.classList.add('fa-plus-circle');
                 targetElement.classList.add('collapsed');
             } else {
-                targetElement.style.maxHeight = targetElement.scrollHeight + 'px'; 
+                targetElement.style.maxHeight = targetElement.scrollHeight + 'px';
                 targetElement.style.paddingTop = '20px';
                 targetElement.style.opacity = '1';
                 icon.classList.remove('fa-plus-circle');
@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 targetElement.classList.remove('collapsed');
             }
         });
-        
+
         const targetId = button.getAttribute('data-target');
         const targetElement = document.getElementById(targetId);
         if (targetElement) {
@@ -65,6 +65,4 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    const emailLink = document.createElement('a');
-    emailLink.href = `mailto:${document.querySelector('.profile-details h2').textContent.split('@')[0]}@example.com`;
 });

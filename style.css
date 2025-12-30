@@ -1,0 +1,377 @@
+html {
+    scroll-behavior: smooth;
+}
+
+:root {
+    --body-bg: #f4f4f4;        
+    --main-bg: white;          
+    --text-color: #333; 
+    --secondary-text-color: #666; 
+    --section-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+    --form-bg: #e9e9e9;        
+    --border-color: #ccc;      
+    --shadow-inset: inset 0 0 10px rgba(0, 0, 0, 0.05); 
+    --contrast-bg: #f4f4f4;
+    --primary-highlight: #5AC8C5;
+}
+
+body.dark-mode {
+    --body-bg: #121212;
+    --main-bg: #1e1e1e;
+    --text-color: #e0e0e0; 
+    --secondary-text-color: #b0b0b0;
+    --section-shadow: 0 2px 8px rgba(255, 255, 255, 0.1);
+    --form-bg: #2d2d2d;
+    --border-color: #444;
+    --shadow-inset: inset 0 0 10px rgba(255, 255, 255, 0.05);
+    --contrast-bg: #2d2d2d;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--body-bg);
+    color: white;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+    line-height: 1.6;
+    transition: background-color 0.3s, color 0.3s;
+    background-image: url('network_background.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center center;
+}
+
+.main-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px 20px; 
+}
+
+h3 {
+    text-align: center;
+    font-size: 1.8em;
+    color: var(--primary-highlight);
+    margin-top: 40px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.4);
+    padding-bottom: 10px;
+    text-shadow: none;
+    position: relative; 
+}
+
+@keyframes shimmer-rainbow {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+}
+
+.animated-rainbow-line {
+    border-bottom: none; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.animated-rainbow-line::after {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: 0; 
+    left: 0;
+    width: 100%;
+    height: 2px; 
+    background: linear-gradient(
+        to right, 
+        #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #ff00ff, #ff0000 
+    );
+    background-size: 400% 100%; 
+    animation: shimmer-rainbow 4s linear infinite; 
+}
+
+.profile-section {
+    background: none; 
+    color: white; 
+    padding: 10px 20px; 
+    margin-top: -10px;
+    margin-left: -50px; 
+    box-shadow: none; 
+    margin-bottom: 30px;
+    border-radius: 8px; 
+}
+
+.profile-content {
+    display: flex;
+    max-width: 1000px;
+    margin: 0 auto;
+    align-items: flex-start;
+    gap: 40px;
+}
+
+.profile-image-container {
+    flex-shrink: 0;
+    text-align: center;
+    position: relative;
+    width: 200px;
+    padding-top: 20px;
+}
+
+.profile-image {
+    width: 180px; 
+    height: 180px;
+    border-radius: 4px;
+    object-fit: cover;
+    border: 3px solid white; 
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+    margin: 10px 0 10px 0;
+    transition: transform 0.3s ease-in-out;
+}
+
+.profile-details {
+    flex-grow: 1;
+    text-align: left;
+    padding-top: 0px; 
+    margin-left: -10px; 
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+.profile-details h1 {
+    font-size: 2.5em; 
+    color: white; 
+    margin-top: 0;
+}
+
+@keyframes pulse-border {
+    0% {
+        box-shadow: 0 0 0 0 rgba(0, 123, 255, 0.4); 
+    }
+    70% {
+        box-shadow: 0 0 0 5px rgba(0, 123, 255, 0); 
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(0, 123, 255, 0);
+    }
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 25px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease, transform 0.2s;
+}
+
+.primary-btn { 
+    background-color: #FFD700;
+    color: #333;
+    border: 2px solid #FFD700;
+}
+
+.quick-nav {
+    text-align: center;
+    padding: 10px 0;
+    margin-bottom: 30px;
+    background-color: transparent; 
+    box-shadow: none; 
+    border-radius: 8px;
+}
+
+.secondary-btn { 
+    background-color: var(--contrast-bg);
+    color: #007BFF; 
+    border: 1px solid var(--border-color);
+    margin: 5px 10px;
+    padding: 8px 15px;
+    font-size: 0.9em;
+    animation: pulse-border 2s infinite; 
+    transition: all 0.3s ease; 
+}
+
+.experience-section, .education-section, .skills-section, .info-personnelles-section, .contact-and-download-container {
+    padding: 20px;
+    background-color: transparent; 
+    box-shadow: none; 
+    margin-bottom: 20px;
+    border-radius: 8px;
+    color: var(--text-color);
+    text-shadow: none;
+}
+
+.content-list {
+    transition: max-height 0.4s ease-in-out, opacity 0.4s ease-in-out, padding 0.4s ease-in-out;
+    overflow: hidden;
+    opacity: 1;
+    padding-top: 20px; 
+}
+
+.content-list.collapsed {
+    max-height: 0 !important; 
+    opacity: 0 !important;
+    padding-top: 0 !important;
+}
+
+.toggle-btn {
+    background: none;
+    border: none;
+    color: var(--primary-highlight); 
+    font-size: 1.2em;
+    cursor: pointer;
+    margin-left: 10px;
+    transition: transform 0.2s;
+    padding: 0;
+    line-height: 1;
+}
+
+.toggle-btn:hover {
+    transform: scale(1.1);
+}
+
+.animated-rainbow-line .toggle-btn {
+    margin-left: auto;
+    margin-right: 0;
+}
+
+.edit-form-container { 
+    background-color: var(--main-bg); 
+    padding: 25px; 
+    border-radius: 8px; 
+    margin-bottom: 30px; 
+    box-shadow: var(--section-shadow); 
+}
+
+.crud-item { 
+    border: 1px solid var(--border-color);
+    padding: 15px; 
+    margin-bottom: 15px; 
+    border-radius: 6px; 
+    background-color: var(--contrast-bg); 
+}
+
+.crud-actions { 
+    display: flex; 
+    gap: 10px; 
+    margin-top: 15px; 
+}
+
+.crud-actions button { 
+    padding: 10px 18px; 
+    font-weight: bold; 
+    border: none; 
+    border-radius: 4px; 
+    cursor: pointer; 
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+.btn-update { 
+    background-color: #007bff; 
+    color: white; 
+}
+
+.btn-delete { 
+    background-color: #dc3545; 
+    color: white; 
+}
+
+.btn-add { 
+    background-color: #28a745; 
+    color: white; 
+}
+
+.edit-form-container .form-group input[type="text"], 
+.edit-form-container .form-group input[type="date"], 
+.edit-form-container .form-group textarea { 
+    width: calc(100% - 22px); 
+    padding: 10px; 
+    margin-top: 5px; 
+    border: 1px solid var(--border-color); 
+    border-radius: 4px; 
+    background-color: var(--form-bg); 
+    color: var(--text-color); 
+}
+
+.edit-form-container .form-group textarea {
+    min-height: 100px;
+    resize: vertical; 
+}
+
+.edit-form-container .form-group label { 
+    color: var(--text-color); 
+    font-weight: bold;
+    display: block; 
+    margin-top: 10px;
+}
+
+@media (max-width: 768px) {
+    .profile-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+    
+    .profile-details {
+        text-align: center; 
+        padding-top: 10px;
+        margin-left: 0;
+    }
+    .profile-details h3 {
+        text-align: center;
+    }
+
+    .info-personnelles-section {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .contact-details-box {
+        min-width: unset;
+        flex: 1 1 100%;
+    }
+}
+
+.job-entry, .degree-entry {
+    background: rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    border-left: 4px solid var(--primary-highlight);
+    margin-bottom: 10px;
+    border-radius: 4px;
+    color: var(--text-color);
+}
+
+.job-entry h4, .degree-entry h4 {
+    color: var(--text-color);
+    margin: 0 0 5px 0;
+    font-size: 1.2em;
+}
+
+.job-entry .details, .degree-entry .details {
+    color: var(--secondary-text-color);
+    font-style: italic;
+    font-size: 0.9em;
+}
+
+.skills-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: space-between;
+    color: var(--text-color);
+}
+
+.skill-category {
+    flex: 1 1 30%;
+    min-width: 250px;
+}
+
+.skill-category ul {
+    list-style: disc;
+    padding-left: 20px;
+}
+
+.skill-category h4 {
+    color: var(--primary-highlight);
+    border-bottom: 1px dotted var(--secondary-text-color);
+    padding-bottom: 5px;
+}

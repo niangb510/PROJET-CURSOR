@@ -116,3 +116,39 @@ img {
         transform: translateY(0);
     }
 }
+
+// GSAP Dynamic Text Styles
+.split-line {
+    overflow: hidden;
+    display: block;
+}
+
+.split-char {
+    display: inline-block;
+    will-change: transform, opacity;
+}
+
+.parallax-container {
+    perspective: 1000px;
+    overflow: visible;
+}
+
+.hero__title {
+
+    // Styling for the outlined effect inspired by Van Holtz
+    &.outline {
+        -webkit-text-stroke: 1px currentColor;
+        color: transparent;
+        transition: color 0.5s ease;
+
+        &.active {
+            color: $primary;
+            -webkit-text-stroke: 0;
+        }
+    }
+}
+
+.magnetic-wrap {
+    display: inline-block;
+    transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}

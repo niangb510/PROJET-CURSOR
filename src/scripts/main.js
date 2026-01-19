@@ -1,4 +1,8 @@
 import '../styles/main.scss';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 // Projects Data
 const projects = [
@@ -172,10 +176,75 @@ function initReveal() {
     revealElements.forEach(el => revealObserver.observe(el));
 }
 
+// GSAP Dynamic Animations
+function initDynamicAnimations() {
+    // 1. Text reveal animation for section titles
+    const titles = document.querySelectorAll('.section-title');
+    titles.forEach(title => {
+        // Simple character animation effect
+        const text = title.textContent;
+        title.innerHTML = text.split('').map(char =>
+            `<span class="split-char">${char === ' ' ? '&nbsp;' : char}</span>`
+        ).join('');
+
+        gsap.from(title.querySelectorAll('.split-char'), {
+            scrollTrigger: {
+                trigger: title,
+                start: "top 85%",
+            },
+            y: 40,
+            opacity: 0,
+            duration: 0.8,
+            stagger: 0.02,
+            ease: "power3.out"
+        });
+    });
+
+    // 2. Parallax effect for hero section
+    gsap.to('.hero__image', {
+        scrollTrigger: {
+            trigger: '.hero',
+            start: "top top",
+            end: "bottom top",
+            scrub: true
+        },
+        y: 100,
+        scale: 1.1,
+        ease: "none"
+    });
+
+    // 3. Magnetic effect on nav links (simplified)
+    const navLinks = document.querySelectorAll('.nav__link, .btn');
+    navLinks.forEach(link => {
+        link.addEventListener('mousemove', (e) => {
+            const rect = link.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+
+            gsap.to(link, {
+                x: x * 0.3,
+                y: y * 0.3,
+                duration: 0.3,
+                ease: "power2.out"
+            });
+        });
+
+        link.addEventListener('mouseleave', () => {
+            gsap.to(link, {
+                x: 0,
+                y: 0,
+                duration: 0.5,
+                ease: "elastic.out(1, 0.3)"
+            });
+        });
+    });
+}
+
 // Init
 document.addEventListener('DOMContentLoaded', () => {
     initProjects();
     initReveal();
+    initDynamicAnimations();
 
     // Check system preference for dark mode
     if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {

@@ -4,117 +4,193 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>N'BAYE NIANG - CV Dynamique</title>
+    <title>N'Baye Niang | Portfolio RNCP Epitech</title>
+    <meta name="description"
+        content="Portfolio professionnel de N'Baye Niang, étudiant à Epitech. Showcase de projets et suivi pédagogique RNCP.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;600;800&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-
-    <button id="dark-mode-toggle" class="btn dark-mode-toggle-btn" title="Toggle dark mode">
-        <i class="fas fa-moon"></i>
-    </button>
-
-    <div class="main-container">
-
-        <!-- HEADER / PROFIL -->
-        <header class="profile-section">
-            <div class="profile-content">
-                <div class="profile-image-container">
-                    <img src="image_profil.png" alt="Profile Picture" class="profile-image">
+    <div id="app">
+        <header class="header">
+            <nav class="nav container">
+                <div class="nav__logo">
+                    <span class="nav__logo-text">N'Baye Niang</span>
                 </div>
-                <div class="profile-details">
-                    <h1>N'BAYE NIANG</h1>
-                    <h2>Étudiant en informatique — Développement Web & projets IA
-                        Passionné par la création d’applications utiles et automatisées</h2>
+
+                <div class="nav__toggle-wrapper">
+                    <button id="view-toggle" class="view-toggle">
+                        <span class="view-toggle__label view-toggle__label--active" data-view="showcase">Showcase</span>
+                        <div class="view-toggle__switch">
+                            <div class="view-toggle__slider"></div>
+                        </div>
+                        <span class="view-toggle__label" data-view="pedagogical">Pédagogique</span>
+                    </button>
                 </div>
-            </div>
+
+                <ul class="nav__list">
+                    <li><a href="#about" class="nav__link">Bio</a></li>
+                    <li><a href="#projects" class="nav__link">Projets</a></li>
+                    <li><a href="#skills" class="nav__link">Compétences</a></li>
+                    <li><a href="#contact" class="nav__link">Contact</a></li>
+                </ul>
+
+                <button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </nav>
         </header>
 
-        <!-- NAVIGATION -->
-        <nav class="quick-nav">
-            <a href="#experience" class="btn secondary-btn">Expérience</a>
-            <a href="#education" class="btn secondary-btn">Formation</a>
-            <a href="#skills" class="btn secondary-btn">Compétences</a>
-            <a href="edit.html" class="btn primary-btn" style="margin-left: 20px;">
-                <i class="fas fa-edit"></i> MODE ÉDITION
-            </a>
-        </nav>
+        <main>
+            <!-- Showcase View -->
+            <section id="showcase-view" class="view-section">
+                <section id="hero" class="hero container reveal">
+                    <div class="hero__content">
+                        <h1 class="hero__title">Développeur Web & Solutions Logistiques</h1>
+                        <p class="hero__subtitle">Étudiant à Epitech, je transforme des défis complexes en solutions
+                            numériques élégantes et performantes.</p>
+                        <div class="hero__actions">
+                            <a href="#projects" class="btn btn--primary">Voir mes projets</a>
+                            <a href="/src/assets/CV_NBaye_Niang.pdf" class="btn btn--secondary" download>Télécharger mon
+                                CV <i class="fas fa-download"></i></a>
+                        </div>
+                    </div>
+                    <div class="hero__image-wrapper">
+                        <img src="/src/assets/image_profil.png" alt="N'Baye Niang" class="hero__image">
+                    </div>
+                </section>
 
-        <!-- 1. SECTION EXPERIENCE -->
-        <section class="experience-section tab-content" id="experience">
-            <h3 class="animated-rainbow-line">Expérience Professionnelle
-                <button class="toggle-btn" data-target="experience-list"><i class="fas fa-minus-circle"></i></button>
-            </h3>
+                <section id="about" class="about container section-padding reveal">
+                    <h2 class="section-title">Ma Philosophie</h2>
+                    <div class="about__grid">
+                        <div class="about__text">
+                            <p>Passionné par l'intersection entre la technologie et l'efficacité opérationnelle,
+                                j'aborde chaque projet avec une vision holistique. Mon parcours hybride entre la
+                                logistique et le développement informatique me permet de comprendre les besoins métiers
+                                profonds avant de coder la moindre ligne.</p>
+                            <p>Ma démarche repose sur trois piliers : la rigueur technique, l'adaptabilité constante et
+                                la recherche de l'impact utilisateur.</p>
+                        </div>
+                        <div class="about__interests">
+                            <h3 class="about__subtitle">Centres d'intérêt</h3>
+                            <ul class="interests-list">
+                                <li><i class="fas fa-microchip"></i> Tech & Innovation</li>
+                                <li><i class="fas fa-truck-loading"></i> Supply Chain</li>
+                                <li><i class="fas fa-basketball-ball"></i> Sports collectifs</li>
+                                <li><i class="fas fa-music"></i> Culture musicale</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
 
-            <div id="experience-list" class="content-list">
-                <article class="job-entry">
-                    <h4>Vente de téléphones (Retail)</h4>
-                    <p class="details">
-                        2023-10-01 to 2025-06-30 | Privé, Ouagadougou, CT, Burkina Faso
-                    </p>
-                </article>
-                <article class="job-entry">
-                    <h4>Opérateur de saisie</h4>
-                    <p class="details">
-                        2022-04-01 to 2022-09-30 | Bolloré Transport et logistique Burkina, Ouagadougou
-                    </p>
-                </article>
-                <article class="job-entry">
-                    <h4>Coordinateur de transport</h4>
-                    <p class="details">
-                        2016-11-01 to 2017-09-30 | SDF International, Ouagadougou, CT, Burkina Faso
-                    </p>
-                </article>
-            </div>
-        </section>
+                <section id="projects" class="projects container section-padding reveal">
+                    <h2 class="section-title">Projets Marquants</h2>
+                    <div class="projects__grid" id="projects-container">
+                        <!-- Projects will be injected here -->
+                    </div>
+                </section>
+            </section>
 
-        <!-- 2. SECTION EDUCATION -->
-        <section class="education-section tab-content" id="education">
-            <h3 class="animated-rainbow-line">Diplômes et Formations
-                <button class="toggle-btn" data-target="education-list"><i class="fas fa-minus-circle"></i></button>
-            </h3>
+            <!-- Pedagogical View (Hidden by default) -->
+            <section id="pedagogical-view" class="view-section hidden">
+                <div class="container section-padding">
+                    <h2 class="section-title">Suivi Pédagogique & RNCP</h2>
+                    <p class="section-intro">Espace dédié aux tuteurs pour documenter ma progression et la validation
+                        des blocs de compétences.</p>
 
-            <div id="education-list" class="content-list">
-                <article class="degree-entry">
-                    <h4>BACHELOR OF COMPUTER SCIENCE</h4>
-                    <p class="details">
-                        2025-09-01 to 2026-06-30 | EPITECH Moulins
-                    </p>
-                </article>
-            </div>
-        </section>
+                    <div class="rncp-blocks">
+                        <!-- RNCP Blocks and progress -->
+                    </div>
 
-        <!-- 3. SECTION SKILLS -->
-        <section class="skills-section tab-content" id="skills">
-            <h3 class="animated-rainbow-line">Compétences et Atouts
-                <button class="toggle-btn" data-target="skills-list"><i class="fas fa-minus-circle"></i></button>
-            </h3>
-
-            <div id="skills-list" class="content-list">
-                <div class="skill-category">
-                    <h4>Compétences Techniques et Personnelles</h4>
-                    <ul>
-                        <li>Développement Web (HTML, CSS, JS)</li>
-                        <li>Gestion de projet</li>
-                        <li>Logistique et Transport</li>
-                    </ul>
+                    <div class="pedagogical-projects">
+                        <h3 class="section-subtitle">Journal de Bord des Projets</h3>
+                        <div id="pedagogical-list" class="pedagogical-list">
+                            <!-- Detailed project analysis for tutors -->
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- 4. SECTION CONTACT -->
-        <section class="info-personnelles-section tab-content" id="info-personnelles">
-            <h3 class="animated-rainbow-line">Informations Personnelles et Contact</h3>
-            <div class="contact-details-box">
-                <h4>Coordonnées</h4>
-                <p><strong>Téléphone:</strong> 0615897026</p>
-                <p><strong>Email:</strong> <a href="mailto:niangaffou@gmail.com">niangaffou@gmail.com</a></p>
-            </div>
-        </section>
+            <section id="skills" class="skills container section-padding reveal">
+                <h2 class="section-title">Compétences</h2>
+                <div class="skills__grid">
+                    <div class="skills__category">
+                        <h3>Développement</h3>
+                        <div class="skills__tags">
+                            <span class="tag">HTML5/CSS3</span>
+                            <span class="tag">JavaScript (ES6+)</span>
+                            <span class="tag">Python</span>
+                            <span class="tag">PHP</span>
+                            <span class="tag">SQL / NoSQL</span>
+                        </div>
+                    </div>
+                    <div class="skills__category">
+                        <h3>Outils & DevOps</h3>
+                        <div class="skills__tags">
+                            <span class="tag">Git / GitHub</span>
+                            <span class="tag">Docker</span>
+                            <span class="tag">Vite</span>
+                            <span class="tag">BEM Methodology</span>
+                        </div>
+                    </div>
+                    <div class="skills__category">
+                        <h3>Logistique</h3>
+                        <div class="skills__tags">
+                            <span class="tag">Gestion de stock</span>
+                            <span class="tag">WMS/TMS</span>
+                            <span class="tag">Supply Chain</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
+            <section id="contact" class="contact container section-padding reveal">
+                <h2 class="section-title">Me Contacter</h2>
+                <div class="contact__grid">
+                    <div class="contact__info">
+                        <p>Disponible pour de nouvelles opportunités ou collaborations.</p>
+                        <div class="contact__links">
+                            <a href="mailto:niangaffou@gmail.com"><i class="fas fa-envelope"></i>
+                                niangaffou@gmail.com</a>
+                            <a href="https://www.linkedin.com/in/baye-niang-677981" target="_blank"><i
+                                    class="fab fa-linkedin"></i> LinkedIn</a>
+                            <a href="https://github.com/niangb510" target="_blank"><i class="fab fa-github"></i>
+                                GitHub</a>
+                        </div>
+                    </div>
+                    <form id="contact-form" class="contact__form" action="https://formspree.io/f/xvgzvypw"
+                        method="POST">
+                        <div class="form__group">
+                            <label for="name">Nom</label>
+                            <input type="text" id="name" name="name" required placeholder="Votre nom">
+                        </div>
+                        <div class="form__group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required placeholder="votre@email.com">
+                        </div>
+                        <div class="form__group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" required placeholder="Votre message..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn--primary">Envoyer</button>
+                        <div id="form-status" class="form-status hidden"></div>
+                    </form>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <div class="container">
+                <p>&copy; 2026 N'Baye Niang - Portfolio Epitech RNCP</p>
+            </div>
+        </footer>
     </div>
-    <script src="script.js"></script>
+    <script type="module" src="/src/scripts/main.js"></script>
 </body>
 
 </html>

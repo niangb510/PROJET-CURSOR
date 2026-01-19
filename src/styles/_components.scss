@@ -1,0 +1,213 @@
+@import 'variables';
+
+// Project Cards
+.projects__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2.5rem;
+}
+
+.project-card {
+    background: $card-bg-light;
+    border-radius: 1rem;
+    overflow: hidden;
+    border: 1px solid $border-light;
+    transition: $transition;
+
+    body.dark-mode & {
+        background: $card-bg-dark;
+        border-color: $border-dark;
+    }
+
+    &:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    &__image {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+    }
+
+    &__content {
+        padding: 1.5rem;
+    }
+
+    &__title {
+        font-family: $font-heading;
+        font-size: 1.5rem;
+        margin-bottom: 0.75rem;
+    }
+
+    &__description {
+        color: $secondary;
+        font-size: 0.95rem;
+        margin-bottom: 1.5rem;
+    }
+
+    &__tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+    }
+
+    &__rncp {
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: $primary;
+        display: block;
+        margin-bottom: 0.5rem;
+    }
+}
+
+.tag {
+    background: rgba($primary, 0.1);
+    color: $primary;
+    padding: 0.25rem 0.75rem;
+    border-radius: 2rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+// Contact Form
+.contact__grid {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: 4rem;
+
+    @media (max-width: $tablet) {
+        grid-template-columns: 1fr;
+    }
+}
+
+.contact__form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form__group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    label {
+        font-weight: 600;
+        font-size: 0.9rem;
+    }
+
+    input,
+    textarea {
+        padding: 0.75rem 1rem;
+        border-radius: 0.5rem;
+        border: 1px solid $border-light;
+        background: $card-bg-light;
+        font-family: $font-main;
+        transition: $transition;
+
+        body.dark-mode & {
+            border-color: $border-dark;
+            background: $card-bg-dark;
+            color: $text-dark;
+        }
+
+        &:focus {
+            outline: none;
+            border-color: $primary;
+            box-shadow: 0 0 0 3px rgba($primary, 0.1);
+        }
+    }
+
+    textarea {
+        min-height: 150px;
+        resize: vertical;
+    }
+}
+
+.form-status {
+    margin-top: 1rem;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-align: center;
+
+    &.success {
+        background: rgba(#10b981, 0.1);
+        color: #059669;
+        border: 1px solid #10b981;
+    }
+
+    &.error {
+        background: rgba(#ef4444, 0.1);
+        color: #dc2626;
+        border: 1px solid #ef4444;
+    }
+}
+
+// Theme Toggle
+.theme-toggle {
+    background: none;
+    border: none;
+    font-size: 1.25rem;
+    cursor: pointer;
+    color: $text-light;
+    transition: $transition;
+
+    body.dark-mode & {
+        color: $text-dark;
+    }
+
+    &:hover {
+        color: $primary;
+    }
+}
+
+// Pedagogical List
+.pedagogical-item {
+    background: $card-bg-light;
+    border-radius: 1rem;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border-left: 5px solid $primary;
+    border: 1px solid $border-light;
+    border-left: 5px solid $primary;
+
+    body.dark-mode & {
+        background: $card-bg-dark;
+        border-color: $border-dark;
+    }
+
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1.5rem;
+    }
+
+    &__analysis {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+
+        @media (max-width: $tablet) {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    &__block {
+        h4 {
+            font-family: $font-heading;
+            margin-bottom: 0.5rem;
+            color: $primary;
+        }
+
+        p {
+            font-size: 0.9rem;
+            color: $secondary;
+        }
+    }
+}

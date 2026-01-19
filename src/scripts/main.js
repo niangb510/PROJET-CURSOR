@@ -130,49 +130,29 @@ themeToggle.addEventListener('click', () => {
     }
 });
 
-// Contact Form Handling with Formspree
-contactForm.addEventListener('submit', async (e) => {
+// Contact Form Handling with Mailto (Simpler Method)
+contactForm.addEventListener('submit', (e) => {
     e.preventDefault();
     const status = document.getElementById('form-status');
-    const submitBtn = contactForm.querySelector('button[type="submit"]');
-    const data = new FormData(e.target);
+    const formData = new FormData(contactForm);
+    const name = formData.get('name');
+    const email = formData.get('email');
+    const message = formData.get('message');
 
-    // Disable button and show loading state
-    submitBtn.disabled = true;
-    submitBtn.textContent = "Envoi en cours...";
+    // Prepare mailto URL
+    const subject = encodeURIComponent(`Contact Portfolio de ${name}`);
+    const body = encodeURIComponent(`De: ${name} (${email})\n\nMessage:\n${message}`);
+    const mailtoUrl = `mailto:niangaffou@gmail.com?subject=${subject}&body=${body}`;
 
-    try {
-        const response = await fetch(e.target.action, {
-            method: contactForm.method,
-            body: data,
-            headers: {
-                'Accept': 'application/json'
-            }
-        });
+    // Show status and redirect
+    status.innerHTML = "Votre application de messagerie va s'ouvrir pour envoyer le mail.";
+    status.classList.remove('hidden', 'error');
+    status.classList.add('success');
 
-        if (response.ok) {
-            status.innerHTML = "Merci ! Votre message a été envoyé avec succès.";
-            status.classList.remove('hidden', 'error');
-            status.classList.add('success');
-            contactForm.reset();
-        } else {
-            const result = await response.json();
-            if (Object.hasOwn(result, 'errors')) {
-                status.innerHTML = result.errors.map(error => error.message).join(", ");
-            } else {
-                status.innerHTML = "Oups ! Un problème est survenu lors de l'envoi.";
-            }
-            status.classList.remove('hidden', 'success');
-            status.classList.add('error');
-        }
-    } catch (error) {
-        status.innerHTML = "Oups ! Impossible de contacter le serveur.";
-        status.classList.remove('hidden', 'success');
-        status.classList.add('error');
-    } finally {
-        submitBtn.disabled = false;
-        submitBtn.textContent = "Envoyer";
-    }
+    // Redirect to mailto after a short delay
+    setTimeout(() => {
+        window.location.href = mailtoUrl;
+    }, 1000);
 });
 
 // Reveal Animation Logic

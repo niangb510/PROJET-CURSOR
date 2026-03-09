@@ -1,6 +1,7 @@
 import '../styles/main.scss';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { initWebGLBackground } from './webgl.js';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -10,8 +11,9 @@ const projects = [
         id: 1,
         title: "Site Web pour Agent de Football",
         description: "Site vitrine complet avec gestion de formulaires et présentation de joueurs.",
-        image: "https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&q=80&w=800",
-        tags: ["HTML5", "CSS3", "JavaScript"],
+        image: "https://s0.wp.com/mshots/v1/https%3A%2F%2Fni-conseils-managements.netlify.app%2F?w=800", // Screenshot automatique du site final
+        link: "https://ni-conseils-managements.netlify.app/",
+        tags: ["HTML5", "CSS3", "JS", "PWA", "Font Awesome"],
         rncp: "Développer une interface utilisateur",
         analysis: {
             progression: "Maîtrise de la structure sémantique et du responsive design.",
@@ -34,11 +36,12 @@ const projects = [
     },
     {
         id: 3,
-        title: "Portfolio RNCP",
-        description: "Ce portfolio hybride conçu pour la validation du titre Epitech.",
-        image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800",
-        tags: ["Vite", "Sass", "BEM"],
-        rncp: "Démarche DevOps & Qualité",
+        title: "Portfolio Professionnel",
+        description: "Une vitrine immersive alliant design minimaliste et performances WebGL.",
+        image: "https://s0.wp.com/mshots/v1/https%3A%2F%2Fportefoliobaye.netlify.app%2F?w=800",
+        link: "https://portefoliobaye.netlify.app/",
+        tags: ["Vite", "Sass", "GSAP", "Three.js"],
+        rncp: "Architecture & Design",
         analysis: {
             progression: "Utilisation d'un workflow moderne (Vite, Sass) et méthodologie BEM.",
             errors: "Architecture CSS initiale trop monolithique.",
@@ -69,7 +72,10 @@ function initProjects() {
                 <div class="project-card__tags">
                     ${project.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
                 </div>
-                <button class="btn btn--secondary btn--small" onclick="document.getElementById('view-toggle').click()">Détails RNCP</button>
+                <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+                    ${project.link ? `<a href="${project.link}" target="_blank" class="btn btn--primary btn--small">Voir le site</a>` : ''}
+                    <button class="btn btn--secondary btn--small" onclick="document.getElementById('view-toggle').click()">Détails RNCP</button>
+                </div>
             </div>
         </article>
     `).join('');
@@ -240,11 +246,56 @@ function initDynamicAnimations() {
     });
 }
 
+// Custom Cursor Logic
+function initCustomCursor() {
+    const cursor = document.getElementById('custom-cursor');
+    if (!cursor) return;
+
+    window.addEventListener('mousemove', (e) => {
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
+    });
+
+    const hoverElements = document.querySelectorAll('a, button, .vision__card, .project-card');
+    hoverElements.forEach(el => {
+        el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+        el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+    });
+}
+
+// Typewriter Effect
+function initTypewriterEffect() {
+    const titleElement = document.getElementById('typewriter-title');
+    if (!titleElement) return;
+
+    const text = titleElement.textContent;
+    titleElement.innerHTML = '';
+    let i = 0;
+
+    function typeWriter() {
+        if (i < text.length) {
+            titleElement.innerHTML += text.charAt(i);
+            i++;
+            setTimeout(typeWriter, 50);
+        } else {
+            // Optional: add a blinking cursor effect at the end using CSS or JS
+            titleElement.style.borderRight = '4px solid #6d28d9';
+            gsap.to(titleElement, { borderRightColor: 'transparent', repeat: -1, yoyo: true, duration: 0.8 });
+        }
+    }
+
+    // Start typing after a short delay
+    setTimeout(typeWriter, 500);
+}
+
 // Init
 document.addEventListener('DOMContentLoaded', () => {
     initProjects();
     initReveal();
     initDynamicAnimations();
+    initCustomCursor();
+    initTypewriterEffect();
+    initWebGLBackground();
 
     // Check system preference for dark mode
     if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {

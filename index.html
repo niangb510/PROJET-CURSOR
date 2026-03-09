@@ -25,6 +25,7 @@
 </head>
 
 <body>
+    <div id="custom-cursor" class="custom-cursor"></div>
     <div id="app">
         <header class="header">
             <nav class="nav container">
@@ -60,7 +61,7 @@
             <section id="showcase-view" class="view-section">
                 <section id="hero" class="hero container reveal">
                     <div class="hero__content">
-                        <h1 class="hero__title">Développeur Web & Solutions Logistiques</h1>
+                        <h1 class="hero__title" id="typewriter-title">Développeur Web & Solutions Logistiques</h1>
                         <p class="hero__subtitle">Étudiant à Epitech, je transforme des défis complexes en solutions
                             numériques élégantes et performantes.</p>
                         <div class="hero__actions">
@@ -71,6 +72,31 @@
                     </div>
                     <div class="hero__image-wrapper">
                         <img src="/src/assets/image_profil.png" alt="N'Baye Niang" class="hero__image">
+                    </div>
+                </section>
+
+                <section id="vision" class="vision container section-padding reveal">
+                    <h2 class="section-title">La Force de l'Hybride</h2>
+                    <div class="vision__grid"
+                        style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-top: 3rem;">
+                        <div class="vision__card"
+                            style="background: var(--card-bg-light); padding: 2rem; border-radius: 1rem; border: 1px solid var(--border-light); text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: all 0.3s ease;">
+                            <i class="fas fa-boxes" style="font-size: 3rem; color: #6d28d9; margin-bottom: 1rem;"></i>
+                            <h3 style="font-family: 'Outfit'; margin-bottom: 1rem;">Vision Logistique</h3>
+                            <p style="color: #94a3b8; font-size: 0.95rem;">Compréhension approfondie de la Supply Chain.
+                                Optimisation des flux physiques et d'information.</p>
+                        </div>
+                        <div class="vision__card" style="display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-arrow-right" style="font-size: 2rem; color: #0ea5e9;"></i>
+                        </div>
+                        <div class="vision__card"
+                            style="background: var(--card-bg-light); padding: 2rem; border-radius: 1rem; border: 1px solid var(--border-light); text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: all 0.3s ease;">
+                            <i class="fas fa-laptop-code"
+                                style="font-size: 3rem; color: #6d28d9; margin-bottom: 1rem;"></i>
+                            <h3 style="font-family: 'Outfit'; margin-bottom: 1rem;">Force Technique</h3>
+                            <p style="color: #94a3b8; font-size: 0.95rem;">Traduction des besoins métiers en solutions
+                                applicatives performantes, sécurisées et scalables.</p>
+                        </div>
                     </div>
                 </section>
 
@@ -194,7 +220,7 @@
 
         <footer class="footer">
             <div class="container">
-                <p>&copy; 2026 N'Baye Niang - Portfolio Epitech RNCP</p>
+                <p>&copy; 2026 N'Baye Niang - Portfolio</p>
             </div>
         </footer>
     </div>

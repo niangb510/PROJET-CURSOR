@@ -1,4 +1,8 @@
-@import 'variables';
+@use 'variables' as *;
+
+main {
+    padding-top: 13rem; // Prévient la superposition avec le header géant (12rem) sur toutes les pages
+}
 
 .header {
     position: fixed;
@@ -18,7 +22,7 @@
 }
 
 .nav {
-    height: 4.5rem;
+    height: 12rem; // Hauteur agrandie jusqu'au niveau de la ligne bleue (environ 200px)
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -94,11 +98,11 @@
 
 .hero {
     display: grid;
-    grid-template-columns: 1.2fr 0.8fr;
+    grid-template-columns: 1.2fr 0.8fr; // Retour à la taille d'image normale
     align-items: center;
     gap: 4rem;
-    min-height: 100vh;
-    padding-top: 4.5rem;
+    min-height: calc(100vh - 13rem);
+    padding-top: 2rem; // Modifié car <main> s'occupe déjà de l'espacement
 
     @media (max-width: $tablet) {
         grid-template-columns: 1fr;

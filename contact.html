@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-99KJJ0E8LY"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-99KJJ0E8LY');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | N'Baye Niang</title>
+    <meta name="description" content="Contactez N'Baye Niang pour des opportunités ou collaborations.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;600;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+    <div id="app">
+        <header class="header">
+            <nav class="nav container">
+                <div class="nav__logo">
+                    <a href="/index.html" class="nav__logo-text">N'Baye Niang</a>
+                </div>
+
+                <ul class="nav__list">
+                    <li><a href="/index.html" class="nav__link">Accueil</a></li>
+                    <li><a href="/about.html" class="nav__link">Bio</a></li>
+                    <li><a href="/projects.html" class="nav__link">Projets</a></li>
+                    <li><a href="/pedagogical.html" class="nav__link">Pédagogique</a></li>
+                    <li><a href="/skills.html" class="nav__link">Compétences</a></li>
+                    <li><a href="/contact.html" class="nav__link nav__link--active">Contact</a></li>
+                </ul>
+
+            </nav>
+        </header>
+
+        <main>
+            <section id="contact" class="contact container section-padding reveal">
+                <h1 class="section-title typewriter-title">Me Contacter</h1>
+                <div class="contact__grid">
+                    <div class="contact__info">
+                        <p>Disponible pour de nouvelles opportunités ou collaborations.</p>
+                        <div class="contact__links">
+                            <a href="mailto:niangaffou@gmail.com"><i class="fas fa-envelope"></i>
+                                niangaffou@gmail.com</a>
+                            <a href="https://www.linkedin.com/in/baye-niang-677981" target="_blank"><i
+                                    class="fab fa-linkedin"></i> LinkedIn</a>
+                            <a href="https://github.com/niangb510" target="_blank"><i class="fab fa-github"></i>
+                                GitHub</a>
+                        </div>
+                    </div>
+                    <form id="contact-form" class="contact__form">
+                        <div class="form__group">
+                            <label for="name">Nom</label>
+                            <input type="text" id="name" name="name" required placeholder="Votre nom">
+                        </div>
+                        <div class="form__group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required placeholder="votre@email.com">
+                        </div>
+                        <div class="form__group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" required placeholder="Votre message..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn--primary">Envoyer</button>
+                        <div id="form-status" class="form-status hidden"></div>
+                    </form>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <div class="container"></div>
+        </footer>
+    </div>
+    <script type="module" src="/src/scripts/main.js"></script>
+</body>
+
+</html>

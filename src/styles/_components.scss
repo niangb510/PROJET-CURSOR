@@ -1,4 +1,4 @@
-@import 'variables';
+@use 'variables' as *;
 
 // Project Cards
 .projects__grid {
@@ -166,19 +166,48 @@
     }
 }
 
+@property --border-angle {
+    syntax: "<angle>";
+    inherits: true;
+    initial-value: 0turn;
+}
+
 // Pedagogical List
 .pedagogical-item {
     background: $card-bg-light;
     border-radius: 1rem;
     padding: 2rem;
     margin-bottom: 2rem;
-    border-left: 5px solid $primary;
-    border: 1px solid $border-light;
-    border-left: 5px solid $primary;
+    position: relative;
+    border: none; // La vraie bordure est dessinée par ::before
 
     body.dark-mode & {
         background: $card-bg-dark;
-        border-color: $border-dark;
+    }
+
+    &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: 1rem;
+        padding: 3px; // C'est l'épaisseur de la bordure arc-en-ciel
+        background: conic-gradient(
+            from var(--border-angle),
+            #ff0000, #ff7700, #ffff00, #00ff00,
+            #0000ff, #8b00ff, #ff0000
+        );
+        // Le secret magique : ce masque évide (troue) le centre exactement au pixel près
+        -webkit-mask:
+            linear-gradient(#fff 0 0) content-box,
+            linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        pointer-events: none;
+        animation: spin-rainbow 4s linear infinite;
+    }
+
+    @keyframes spin-rainbow {
+        to { --border-angle: 1turn; }
     }
 
     &__header {

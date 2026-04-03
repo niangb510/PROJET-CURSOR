@@ -1,4 +1,4 @@
-@import 'variables';
+@use 'variables' as *;
 
 * {
     margin: 0;
@@ -18,7 +18,7 @@ body {
     color: $text-light;
     line-height: 1.6;
     transition: $transition;
-    cursor: none; // Hide default cursor
+
 
     &.dark-mode {
         background-color: rgba(2, 6, 23, 0.85); // Matches new $bg-dark (#020617) with 85% opacity
@@ -26,27 +26,7 @@ body {
     }
 }
 
-// Custom Cursor
-.custom-cursor {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 20px;
-    height: 20px;
-    border: 2px solid $primary;
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 9999;
-    transform: translate(-50%, -50%);
-    transition: width 0.3s, height 0.3s, background-color 0.3s;
-    mix-blend-mode: difference;
 
-    &.hover {
-        width: 50px;
-        height: 50px;
-        background-color: rgba($primary, 0.2);
-    }
-}
 
 .container {
     max-width: $container-width;

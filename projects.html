@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-99KJJ0E8LY"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-99KJJ0E8LY');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projets | N'Baye Niang</title>
+    <meta name="description" content="Découvrez les projets réalisés par N'Baye Niang : applications web, sites vitrines et plus.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;600;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+    <div id="app">
+        <header class="header">
+            <nav class="nav container">
+                <div class="nav__logo">
+                    <a href="/index.html" class="nav__logo-text">N'Baye Niang</a>
+                </div>
+
+                <ul class="nav__list">
+                    <li><a href="/index.html" class="nav__link">Accueil</a></li>
+                    <li><a href="/about.html" class="nav__link">Bio</a></li>
+                    <li><a href="/projects.html" class="nav__link nav__link--active">Projets</a></li>
+                    <li><a href="/pedagogical.html" class="nav__link">Pédagogique</a></li>
+                    <li><a href="/skills.html" class="nav__link">Compétences</a></li>
+                    <li><a href="/contact.html" class="nav__link">Contact</a></li>
+                </ul>
+
+            </nav>
+        </header>
+
+        <main>
+            <section id="projects" class="projects container section-padding reveal">
+                <h1 class="section-title typewriter-title">Projets Marquants</h1>
+                <div class="projects__grid">
+
+                    <article class="project-card">
+                        <img src="https://s0.wp.com/mshots/v1/https%3A%2F%2Fni-conseils-managements.netlify.app%2F?w=800"
+                            alt="Site Web pour Agent de Football" class="project-card__image">
+                        <div class="project-card__content">
+                            <span class="project-card__rncp">Développer une interface utilisateur</span>
+                            <h3 class="project-card__title">Site Web pour Agent de Football</h3>
+                            <p class="project-card__description">Site vitrine complet avec gestion de formulaires
+                                et présentation de joueurs.</p>
+                            <div class="project-card__tags">
+                                <span class="tag">HTML5</span>
+                                <span class="tag">CSS3</span>
+                                <span class="tag">JS</span>
+                                <span class="tag">PWA</span>
+                                <span class="tag">Font Awesome</span>
+                            </div>
+                            <div style="margin-top: 1rem;">
+                                <a href="https://ni-conseils-managements.netlify.app/" target="_blank"
+                                    class="btn btn--primary btn--small">Voir le site</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="project-card">
+                        <img src="https://s0.wp.com/mshots/v1/https%3A%2F%2Fportefoliobaye.netlify.app%2F?w=800"
+                            alt="Portfolio Professionnel" class="project-card__image">
+                        <div class="project-card__content">
+                            <span class="project-card__rncp">Architecture &amp; Design</span>
+                            <h3 class="project-card__title">Portfolio Professionnel</h3>
+                            <p class="project-card__description">Une vitrine immersive alliant design minimaliste
+                                et performances WebGL.</p>
+                            <div class="project-card__tags">
+                                <span class="tag">Vite</span>
+                                <span class="tag">Sass</span>
+                                <span class="tag">GSAP</span>
+                                <span class="tag">Three.js</span>
+                            </div>
+                            <div style="margin-top: 1rem;">
+                                <a href="https://portefoliobaye.netlify.app/" target="_blank"
+                                    class="btn btn--primary btn--small">Voir le site</a>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <div class="container"></div>
+        </footer>
+    </div>
+    <script type="module" src="/src/scripts/main.js"></script>
+</body>
+
+</html>

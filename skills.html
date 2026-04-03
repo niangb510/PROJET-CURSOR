@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-99KJJ0E8LY"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-99KJJ0E8LY');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compétences | N'Baye Niang</title>
+    <meta name="description" content="Les compétences techniques et logistiques de N'Baye Niang.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;600;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+    <div id="app">
+        <header class="header">
+            <nav class="nav container">
+                <div class="nav__logo">
+                    <a href="/index.html" class="nav__logo-text">N'Baye Niang</a>
+                </div>
+
+                <ul class="nav__list">
+                    <li><a href="/index.html" class="nav__link">Accueil</a></li>
+                    <li><a href="/about.html" class="nav__link">Bio</a></li>
+                    <li><a href="/projects.html" class="nav__link">Projets</a></li>
+                    <li><a href="/pedagogical.html" class="nav__link">Pédagogique</a></li>
+                    <li><a href="/skills.html" class="nav__link nav__link--active">Compétences</a></li>
+                    <li><a href="/contact.html" class="nav__link">Contact</a></li>
+                </ul>
+
+            </nav>
+        </header>
+
+        <main>
+            <section id="skills" class="skills container section-padding reveal">
+                <h1 class="section-title typewriter-title">Compétences</h1>
+                <div class="skills__grid">
+                    <div class="skills__category">
+                        <h3>Développement</h3>
+                        <div class="skills__tags">
+                            <span class="tag">HTML5/CSS3</span>
+                            <span class="tag">JavaScript (ES6+)</span>
+                            <span class="tag">Python</span>
+                            <span class="tag">PHP</span>
+                            <span class="tag">SQL / NoSQL</span>
+                        </div>
+                    </div>
+                    <div class="skills__category">
+                        <h3>Outils &amp; DevOps</h3>
+                        <div class="skills__tags">
+                            <span class="tag">Git / GitHub</span>
+                            <span class="tag">Docker</span>
+                            <span class="tag">Vite</span>
+                            <span class="tag">BEM Methodology</span>
+                        </div>
+                    </div>
+                    <div class="skills__category">
+                        <h3>Logistique</h3>
+                        <div class="skills__tags">
+                            <span class="tag">Gestion de stock</span>
+                            <span class="tag">WMS/TMS</span>
+                            <span class="tag">Supply Chain</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <div class="container"></div>
+        </footer>
+    </div>
+    <script type="module" src="/src/scripts/main.js"></script>
+</body>
+
+</html>

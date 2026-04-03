@@ -10,156 +10,153 @@ export function initWebGLBackground() {
     canvas.style.height = '100vh';
     canvas.style.zIndex = '-1'; // Behind everything
     canvas.style.pointerEvents = 'none'; // Don't block interactions
-    canvas.style.opacity = '0.8';
+    
+    // Opacité faible pour garantir une lisibilité parfaite du texte
+    canvas.style.opacity = '0.35'; 
     document.body.prepend(canvas);
 
     const scene = new THREE.Scene();
-    // Add subtle fog to blend into background
-    scene.fog = new THREE.FogExp2(0x0a0a0a, 0.001);
     
-    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 10000);
-    camera.position.z = 1000;
-    camera.position.y = 400;
+    // Fog helps to blend distant particles into the background nicely
+    scene.fog = new THREE.FogExp2(0x020617, 0.0015);
+
+    const camera = new THREE.PerspectiveCamera(65, window.innerWidth / window.innerHeight, 1, 2000);
+    camera.position.z = 800;
 
     const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-    const SEPARATION = 60, AMOUNTX = 100, AMOUNTY = 100;
-    const numParticles = AMOUNTX * AMOUNTY;
+    // Colors matching your tech/portfolio theme
+    const colorPrimary = new THREE.Color(0x6d28d9); // Electric Purple
+    const colorAccent = new THREE.Color(0x0ea5e9); // Cyan
 
-    const positions = new Float32Array(numParticles * 3);
-    const scales = new Float32Array(numParticles);
+    // Generate Particles (Nodes)
+    const particleCount = 200;
+    const particles = new THREE.BufferGeometry();
+    const particlePositions = new Float32Array(particleCount * 3);
+    const particleVelocities = [];
 
-    let i = 0, j = 0;
-    for (let ix = 0; ix < AMOUNTX; ix++) {
-        for (let iy = 0; iy < AMOUNTY; iy++) {
-            positions[i] = ix * SEPARATION - ((AMOUNTX * SEPARATION) / 2); // x
-            positions[i + 1] = 0; // y
-            positions[i + 2] = iy * SEPARATION - ((AMOUNTY * SEPARATION) / 2); // z
-            scales[j] = 1;
-            i += 3;
-            j++;
-        }
+    // Bounding box for particles to float inside
+    const bounds = 800;
+
+    for (let i = 0; i < particleCount; i++) {
+        // Random positions inside bounding box
+        particlePositions[i * 3] = (Math.random() - 0.5) * bounds * 2;
+        particlePositions[i * 3 + 1] = (Math.random() - 0.5) * bounds * 2;
+        particlePositions[i * 3 + 2] = (Math.random() - 0.5) * bounds * 2;
+
+        // Random velocities (slow drift)
+        particleVelocities.push({
+            x: (Math.random() - 0.5) * 1.5,
+            y: (Math.random() - 0.5) * 1.5,
+            z: (Math.random() - 0.5) * 1.5
+        });
     }
 
-    const geometry = new THREE.BufferGeometry();
-    geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-    geometry.setAttribute('scale', new THREE.BufferAttribute(scales, 1));
+    particles.setAttribute('position', new THREE.BufferAttribute(particlePositions, 3));
 
-    // Material with custom shader for beautiful particles
-    const material = new THREE.ShaderMaterial({
-        uniforms: {
-            // Indigo / purple color theme matching the tech/portfolio vibe
-            color: { value: new THREE.Color(0x4f46e5) },
-            time: { value: 0 }
-        },
-        vertexShader: `
-            attribute float scale;
-            varying vec2 vUv;
-            varying float vElevation;
-            
-            void main() {
-                vUv = uv;
-                vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
-                gl_PointSize = scale * (250.0 / - mvPosition.z);
-                gl_Position = projectionMatrix * mvPosition;
-                vElevation = position.y;
-            }
-        `,
-        fragmentShader: `
-            uniform vec3 color;
-            uniform float time;
-            varying float vElevation;
-            
-            void main() {
-                // Determine distance from center to make it circular
-                float dist = length(gl_PointCoord - vec2(0.5, 0.5));
-                if (dist > 0.5) discard;
-                
-                // Soft edge
-                float alpha = (0.5 - dist) * 2.0;
-                
-                // Color variation based on elevation
-                vec3 mixColor = vec3(0.06, 0.73, 0.98); // Cyan
-                vec3 finalColor = mix(color, mixColor, (vElevation + 100.0) / 200.0);
-                
-                // Opacity is reduced so it doesn't distract too much
-                gl_FragColor = vec4(finalColor, alpha * 0.7);
-            }
-        `,
+    // Particle Material
+    const pMaterial = new THREE.PointsMaterial({
+        color: colorAccent,
+        size: 8, // Taille doublée pour être plus visible
         transparent: true,
-        depthWrite: false,
+        opacity: 0.8,
         blending: THREE.AdditiveBlending
     });
 
-    const particles = new THREE.Points(geometry, material);
-    scene.add(particles);
+    const particleSystem = new THREE.Points(particles, pMaterial);
+    scene.add(particleSystem);
 
-    // Mouse interaction variables
+    // Setup Lines (Connections / Network)
+    const linesMaterial = new THREE.LineBasicMaterial({
+        color: colorPrimary,
+        transparent: true,
+        opacity: 0.15, // Keep it very subtle
+        blending: THREE.AdditiveBlending
+    });
+    
+    // We will update lines geometry every frame
+    let linesMesh = new THREE.LineSegments(new THREE.BufferGeometry(), linesMaterial);
+    scene.add(linesMesh);
+
+    // Mouse Interaction
     let mouseX = 0;
     let mouseY = 0;
     let targetX = 0;
     let targetY = 0;
-
     const windowHalfX = window.innerWidth / 2;
     const windowHalfY = window.innerHeight / 2;
 
     document.addEventListener('mousemove', (event) => {
-        // Normalize mouse coordinates for the effect
-        mouseX = event.clientX - windowHalfX;
-        mouseY = event.clientY - windowHalfY;
+        mouseX = (event.clientX - windowHalfX) * 0.4;
+        mouseY = (event.clientY - windowHalfY) * 0.4;
     });
 
-    // Handle resize
     window.addEventListener('resize', () => {
         camera.aspect = window.innerWidth / window.innerHeight;
         camera.updateProjectionMatrix();
         renderer.setSize(window.innerWidth, window.innerHeight);
     });
 
-    let count = 0;
-    const clock = new THREE.Clock();
-
     function animate() {
         requestAnimationFrame(animate);
-        
-        targetX = mouseX * 0.8;
-        targetY = mouseY * 0.8;
-        
-        // Smooth camera movement based on mouse
-        camera.position.x += (targetX - camera.position.x) * 0.05;
-        camera.position.y += (-targetY - camera.position.y) * 0.05 + 2;
+
+        // Smoothly move camera based on mouse position
+        targetX = mouseX;
+        targetY = mouseY;
+        camera.position.x += (targetX - camera.position.x) * 0.03;
+        camera.position.y += (-targetY - camera.position.y) * 0.03;
         camera.lookAt(scene.position);
 
-        const positions = particles.geometry.attributes.position.array;
-        const scales = particles.geometry.attributes.scale.array;
+        // Update particle positions
+        const positions = particleSystem.geometry.attributes.position.array;
+        
+        for (let i = 0; i < particleCount; i++) {
+            positions[i * 3] += particleVelocities[i].x;
+            positions[i * 3 + 1] += particleVelocities[i].y;
+            positions[i * 3 + 2] += particleVelocities[i].z;
 
-        let i = 0, j = 0;
-        for (let ix = 0; ix < AMOUNTX; ix++) {
-            for (let iy = 0; iy < AMOUNTY; iy++) {
-                // Wave logic
-                positions[i + 1] = (Math.sin((ix + count) * 0.3) * 50) +
-                                 (Math.sin((iy + count) * 0.5) * 50);
-                
-                // Pulse scale
-                scales[j] = (Math.sin((ix + count) * 0.3) + 1) * 2 +
-                            (Math.sin((iy + count) * 0.5) + 1) * 2;
-                i += 3;
-                j++;
+            // Bounce off edges smoothly
+            if (positions[i * 3] < -bounds || positions[i * 3] > bounds) particleVelocities[i].x *= -1;
+            if (positions[i * 3 + 1] < -bounds || positions[i * 3 + 1] > bounds) particleVelocities[i].y *= -1;
+            if (positions[i * 3 + 2] < -bounds || positions[i * 3 + 2] > bounds) particleVelocities[i].z *= -1;
+        }
+        
+        particleSystem.geometry.attributes.position.needsUpdate = true;
+        
+        // Very slow constant rotation
+        particleSystem.rotation.y += 0.001;
+        linesMesh.rotation.y = particleSystem.rotation.y;
+
+        // Calculate Network Connections
+        const linePositions = [];
+        const connectDistance = 160; // Max distance to form a link
+
+        for (let i = 0; i < particleCount; i++) {
+            for (let j = i + 1; j < particleCount; j++) {
+                const dx = positions[i * 3] - positions[j * 3];
+                const dy = positions[i * 3 + 1] - positions[j * 3 + 1];
+                const dz = positions[i * 3 + 2] - positions[j * 3 + 2];
+                const dist = Math.sqrt(dx * dx + dy * dy + dz * dz);
+
+                // If particles are close enough, draw a line between them
+                if (dist < connectDistance) {
+                    linePositions.push(
+                        positions[i * 3], positions[i * 3 + 1], positions[i * 3 + 2],
+                        positions[j * 3], positions[j * 3 + 1], positions[j * 3 + 2]
+                    );
+                }
             }
         }
-
-        particles.geometry.attributes.position.needsUpdate = true;
-        particles.geometry.attributes.scale.needsUpdate = true;
         
-        // Slowly rotate scene for dynamic feel
-        particles.rotation.y = count * 0.02;
-
-        count += 0.04;
+        // Update lines geometry with new connections
+        linesMesh.geometry.dispose(); // Free up memory
+        linesMesh.geometry = new THREE.BufferGeometry();
+        linesMesh.geometry.setAttribute('position', new THREE.Float32BufferAttribute(linePositions, 3));
 
         renderer.render(scene, camera);
     }
-    
+
     animate();
 }

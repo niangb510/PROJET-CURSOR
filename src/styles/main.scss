@@ -1,7 +1,8 @@
-@import 'variables';
-@import 'base';
-@import 'layout';
-@import 'components';
+// Main stylesheet - updated to use Sass modules
+@use 'variables' as *;
+@use 'base';
+@use 'layout';
+@use 'components';
 
 // Additional styles for About section
 .about__grid {
@@ -43,12 +44,32 @@
     background: $card-bg-light;
     padding: 2rem;
     border-radius: 1rem;
-    border: 1px solid $border-light;
+    border: none;
+    position: relative;
     transition: $transition;
 
     body.dark-mode & {
         background: $card-bg-dark;
-        border-color: $border-dark;
+    }
+
+    &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: 1rem;
+        padding: 3px;
+        background: conic-gradient(
+            from var(--border-angle),
+            #ff0000, #ff7700, #ffff00, #00ff00,
+            #0000ff, #8b00ff, #ff0000
+        );
+        -webkit-mask:
+            linear-gradient(#fff 0 0) content-box,
+            linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        pointer-events: none;
+        animation: spin-rainbow 4s linear infinite;
     }
 
     h3 {

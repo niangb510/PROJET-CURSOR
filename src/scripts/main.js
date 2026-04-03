@@ -5,169 +5,35 @@ import { initWebGLBackground } from './webgl.js';
 
 gsap.registerPlugin(ScrollTrigger);
 
-// Projects Data
-const projects = [
-    {
-        id: 1,
-        title: "Site Web pour Agent de Football",
-        description: "Site vitrine complet avec gestion de formulaires et présentation de joueurs.",
-        image: "https://s0.wp.com/mshots/v1/https%3A%2F%2Fni-conseils-managements.netlify.app%2F?w=800", // Screenshot automatique du site final
-        link: "https://ni-conseils-managements.netlify.app/",
-        tags: ["HTML5", "CSS3", "JS", "PWA", "Font Awesome"],
-        rncp: "Développer une interface utilisateur",
-        analysis: {
-            progression: "Maîtrise de la structure sémantique et du responsive design.",
-            errors: "Difficultés initiales avec la validation des formulaires côté client.",
-            solutions: "Implémentation de Regex personnalisées et de retours visuels immédiats."
-        }
-    },
-    {
-        id: 2,
-        title: "Application To-Do List",
-        description: "Gestionnaire de tâches avec persistance locale et filtrage dynamique.",
-        image: "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?auto=format&fit=crop&q=80&w=800",
-        tags: ["JavaScript", "Local Storage", "DOM Manipulation"],
-        rncp: "Concevoir une application web",
-        analysis: {
-            progression: "Compréhension profonde de la manipulation du DOM et du cycle de vie des données.",
-            errors: "Gestion complexe des états lors du filtrage.",
-            solutions: "Refactorisation vers une approche basée sur les données (Data-driven)."
-        }
-    },
-    {
-        id: 3,
-        title: "Portfolio Professionnel",
-        description: "Une vitrine immersive alliant design minimaliste et performances WebGL.",
-        image: "https://s0.wp.com/mshots/v1/https%3A%2F%2Fportefoliobaye.netlify.app%2F?w=800",
-        link: "https://portefoliobaye.netlify.app/",
-        tags: ["Vite", "Sass", "GSAP", "Three.js"],
-        rncp: "Architecture & Design",
-        analysis: {
-            progression: "Utilisation d'un workflow moderne (Vite, Sass) et méthodologie BEM.",
-            errors: "Architecture CSS initiale trop monolithique.",
-            solutions: "Découpage en modules SCSS pour une meilleure maintenance."
-        }
-    }
-];
-
-// DOM Elements
-const viewToggle = document.getElementById('view-toggle');
-const showcaseView = document.getElementById('showcase-view');
-const pedagogicalView = document.getElementById('pedagogical-view');
-const themeToggle = document.getElementById('theme-toggle');
-const projectsContainer = document.getElementById('projects-container');
-const pedagogicalList = document.getElementById('pedagogical-list');
+// Contact Form Handling
 const contactForm = document.getElementById('contact-form');
+if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const status = document.getElementById('form-status');
+        const formData = new FormData(contactForm);
+        const name = formData.get('name');
+        const email = formData.get('email');
+        const message = formData.get('message');
 
-// Initialize Projects
-function initProjects() {
-    // Showcase View
-    projectsContainer.innerHTML = projects.map(project => `
-        <article class="project-card">
-            <img src="${project.image}" alt="${project.title}" class="project-card__image">
-            <div class="project-card__content">
-                <span class="project-card__rncp">${project.rncp}</span>
-                <h3 class="project-card__title">${project.title}</h3>
-                <p class="project-card__description">${project.description}</p>
-                <div class="project-card__tags">
-                    ${project.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
-                </div>
-                <div style="display: flex; gap: 1rem; margin-top: 1rem;">
-                    ${project.link ? `<a href="${project.link}" target="_blank" class="btn btn--primary btn--small">Voir le site</a>` : ''}
-                    <button class="btn btn--secondary btn--small" onclick="document.getElementById('view-toggle').click()">Détails RNCP</button>
-                </div>
-            </div>
-        </article>
-    `).join('');
+        const subject = encodeURIComponent(`Contact Portfolio de ${name}`);
+        const body = encodeURIComponent(`De: ${name} (${email})\n\nMessage:\n${message}`);
+        const mailtoUrl = `mailto:niangaffou@gmail.com?subject=${subject}&body=${body}`;
 
-    // Pedagogical View
-    pedagogicalList.innerHTML = projects.map(project => `
-        <div class="pedagogical-item">
-            <div class="pedagogical-item__header">
-                <h3>${project.title}</h3>
-                <span class="tag">${project.rncp}</span>
-            </div>
-            <div class="pedagogical-item__analysis">
-                <div class="pedagogical-item__block">
-                    <h4>Progression & Compétences</h4>
-                    <p>${project.analysis.progression}</p>
-                </div>
-                <div class="pedagogical-item__block">
-                    <h4>Erreurs & Solutions</h4>
-                    <p><strong>Problème :</strong> ${project.analysis.errors}</p>
-                    <p><strong>Solution :</strong> ${project.analysis.solutions}</p>
-                </div>
-            </div>
-        </div>
-    `).join('');
-}
+        status.innerHTML = "Votre application de messagerie va s'ouvrir pour envoyer le mail.";
+        status.classList.remove('hidden', 'error');
+        status.classList.add('success');
 
-// View Switching
-viewToggle.addEventListener('click', () => {
-    const currentView = viewToggle.getAttribute('data-view');
-    const nextView = currentView === 'showcase' ? 'pedagogical' : 'showcase';
-
-    viewToggle.setAttribute('data-view', nextView);
-
-    // Update labels
-    const labels = viewToggle.querySelectorAll('.view-toggle__label');
-    labels.forEach(label => {
-        if (label.getAttribute('data-view') === nextView) {
-            label.classList.add('view-toggle__label--active');
-        } else {
-            label.classList.remove('view-toggle__label--active');
-        }
+        setTimeout(() => {
+            window.location.href = mailtoUrl;
+        }, 1000);
     });
-
-    // Switch views
-    if (nextView === 'pedagogical') {
-        showcaseView.classList.add('hidden');
-        pedagogicalView.classList.remove('hidden');
-    } else {
-        showcaseView.classList.remove('hidden');
-        pedagogicalView.classList.add('hidden');
-    }
-});
-
-// Theme Toggle
-themeToggle.addEventListener('click', () => {
-    document.body.classList.toggle('dark-mode');
-    const icon = themeToggle.querySelector('i');
-    if (document.body.classList.contains('dark-mode')) {
-        icon.classList.replace('fa-moon', 'fa-sun');
-    } else {
-        icon.classList.replace('fa-sun', 'fa-moon');
-    }
-});
-
-// Contact Form Handling with Mailto (Simpler Method)
-contactForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const status = document.getElementById('form-status');
-    const formData = new FormData(contactForm);
-    const name = formData.get('name');
-    const email = formData.get('email');
-    const message = formData.get('message');
-
-    // Prepare mailto URL
-    const subject = encodeURIComponent(`Contact Portfolio de ${name}`);
-    const body = encodeURIComponent(`De: ${name} (${email})\n\nMessage:\n${message}`);
-    const mailtoUrl = `mailto:niangaffou@gmail.com?subject=${subject}&body=${body}`;
-
-    // Show status and redirect
-    status.innerHTML = "Votre application de messagerie va s'ouvrir pour envoyer le mail.";
-    status.classList.remove('hidden', 'error');
-    status.classList.add('success');
-
-    // Redirect to mailto after a short delay
-    setTimeout(() => {
-        window.location.href = mailtoUrl;
-    }, 1000);
-});
+}
 
 // Reveal Animation Logic
 function initReveal() {
     const revealElements = document.querySelectorAll('.reveal');
+    if (revealElements.length === 0) return;
 
     const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -184,10 +50,9 @@ function initReveal() {
 
 // GSAP Dynamic Animations
 function initDynamicAnimations() {
-    // 1. Text reveal animation for section titles
-    const titles = document.querySelectorAll('.section-title');
+    // 1. Text reveal animation for section titles (excluding typewriter titles to avoid conflicts)
+    const titles = document.querySelectorAll('.section-title:not(.typewriter-title)');
     titles.forEach(title => {
-        // Simple character animation effect
         const text = title.textContent;
         title.innerHTML = text.split('').map(char =>
             `<span class="split-char">${char === ' ' ? '&nbsp;' : char}</span>`
@@ -206,20 +71,23 @@ function initDynamicAnimations() {
         });
     });
 
-    // 2. Parallax effect for hero section
-    gsap.to('.hero__image', {
-        scrollTrigger: {
-            trigger: '.hero',
-            start: "top top",
-            end: "bottom top",
-            scrub: true
-        },
-        y: 100,
-        scale: 1.1,
-        ease: "none"
-    });
+    // 2. Parallax effect for hero section (only on index page)
+    const heroImage = document.querySelector('.hero__image');
+    if (heroImage) {
+        gsap.to('.hero__image', {
+            scrollTrigger: {
+                trigger: '.hero',
+                start: "top top",
+                end: "bottom top",
+                scrub: true
+            },
+            y: 100,
+            scale: 1.1,
+            ease: "none"
+        });
+    }
 
-    // 3. Magnetic effect on nav links (simplified)
+    // 3. Magnetic effect on nav links
     const navLinks = document.querySelectorAll('.nav__link, .btn');
     navLinks.forEach(link => {
         link.addEventListener('mousemove', (e) => {
@@ -246,60 +114,37 @@ function initDynamicAnimations() {
     });
 }
 
-// Custom Cursor Logic
-function initCustomCursor() {
-    const cursor = document.getElementById('custom-cursor');
-    if (!cursor) return;
-
-    window.addEventListener('mousemove', (e) => {
-        cursor.style.left = e.clientX + 'px';
-        cursor.style.top = e.clientY + 'px';
-    });
-
-    const hoverElements = document.querySelectorAll('a, button, .vision__card, .project-card');
-    hoverElements.forEach(el => {
-        el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
-        el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
-    });
-}
-
-// Typewriter Effect
+// Typewriter Effect (applicable to any page)
 function initTypewriterEffect() {
-    const titleElement = document.getElementById('typewriter-title');
-    if (!titleElement) return;
+    const titleElements = document.querySelectorAll('.typewriter-title');
+    if (titleElements.length === 0) return;
 
-    const text = titleElement.textContent;
-    titleElement.innerHTML = '';
-    let i = 0;
+    titleElements.forEach(titleElement => {
+        const text = titleElement.textContent.trim();
+        titleElement.innerHTML = '';
+        let i = 0;
 
-    function typeWriter() {
-        if (i < text.length) {
-            titleElement.innerHTML += text.charAt(i);
-            i++;
-            setTimeout(typeWriter, 50);
-        } else {
-            // Optional: add a blinking cursor effect at the end using CSS or JS
-            titleElement.style.borderRight = '4px solid #6d28d9';
-            gsap.to(titleElement, { borderRightColor: 'transparent', repeat: -1, yoyo: true, duration: 0.8 });
+        function typeWriter() {
+            if (i < text.length) {
+                titleElement.innerHTML += text.charAt(i);
+                i++;
+                setTimeout(typeWriter, 50);
+            } else {
+                titleElement.style.borderRight = '4px solid #6d28d9';
+                gsap.to(titleElement, { borderRightColor: 'transparent', repeat: -1, yoyo: true, duration: 0.8 });
+            }
         }
-    }
 
-    // Start typing after a short delay
-    setTimeout(typeWriter, 500);
+        setTimeout(typeWriter, 500);
+    });
 }
 
 // Init
 document.addEventListener('DOMContentLoaded', () => {
-    initProjects();
     initReveal();
     initDynamicAnimations();
-    initCustomCursor();
     initTypewriterEffect();
     initWebGLBackground();
 
-    // Check system preference for dark mode
-    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.classList.add('dark-mode');
-        themeToggle.querySelector('i').classList.replace('fa-moon', 'fa-sun');
-    }
+
 });

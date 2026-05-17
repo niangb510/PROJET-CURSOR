@@ -15,14 +15,14 @@ main {
     border-bottom: 1px solid $border-light;
     transition: $transition;
 
-    body.dark-mode & {
+    html.dark-mode & {
         background-color: rgba($bg-dark, 0.8);
         border-bottom-color: $border-dark;
     }
 }
 
 .nav {
-    height: 12rem; // Hauteur agrandie jusqu'au niveau de la ligne bleue (environ 200px)
+    height: 12rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -34,12 +34,55 @@ main {
         color: $primary;
     }
 
+    &__toggle {
+        display: none;
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        color: $text-light;
+        cursor: pointer;
+        z-index: 1001;
+
+        html.dark-mode & {
+            color: $text-dark;
+        }
+
+        @media (max-width: $tablet) {
+            display: block;
+        }
+    }
+
     &__list {
         display: flex;
         gap: 2rem;
 
         @media (max-width: $tablet) {
-            display: none;
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 70%;
+            max-width: 300px;
+            height: 100vh;
+            background: rgba($bg-light, 0.98);
+            backdrop-filter: blur(10px);
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            transition: right 0.3s ease, visibility 0.3s ease;
+            z-index: 1000;
+            margin: 0;
+            padding: 0;
+            visibility: hidden;
+
+            html.dark-mode & {
+                background: rgba($bg-dark, 0.98);
+            }
+
+            &--open {
+                right: 0;
+                visibility: visible;
+            }
         }
     }
 
@@ -49,50 +92,6 @@ main {
         &:hover {
             color: $primary;
         }
-    }
-}
-
-.view-toggle {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    background: $border-light;
-    padding: 0.25rem;
-    border-radius: 2rem;
-    border: none;
-    cursor: pointer;
-    position: relative;
-
-    body.dark-mode & {
-        background: $border-dark;
-    }
-
-    &__label {
-        font-size: 0.875rem;
-        font-weight: 600;
-        padding: 0.25rem 0.75rem;
-        z-index: 1;
-        transition: $transition;
-        color: $secondary;
-
-        &--active {
-            color: white;
-        }
-    }
-
-    &__slider {
-        position: absolute;
-        height: calc(100% - 0.5rem);
-        width: calc(50% - 0.25rem);
-        background: $primary;
-        border-radius: 1.5rem;
-        top: 0.25rem;
-        left: 0.25rem;
-        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    &[data-view="pedagogical"] &__slider {
-        transform: translateX(100%);
     }
 }
 
@@ -167,7 +166,25 @@ main {
     border-top: 1px solid $border-light;
     margin-top: 4rem;
 
-    body.dark-mode & {
+    html.dark-mode & {
         border-top-color: $border-dark;
+    }
+
+    &__socials {
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+        margin-top: 1rem;
+
+        a {
+            font-size: 1.25rem;
+            color: $secondary;
+            transition: $transition;
+
+            &:hover {
+                color: $primary;
+                transform: translateY(-3px);
+            }
+        }
     }
 }

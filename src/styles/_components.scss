@@ -14,7 +14,7 @@
     border: 1px solid $border-light;
     transition: $transition;
 
-    body.dark-mode & {
+    html.dark-mode & {
         background: $card-bg-dark;
         border-color: $border-dark;
     }
@@ -60,6 +60,10 @@
         color: $primary;
         display: block;
         margin-bottom: 0.5rem;
+    }
+
+    &__actions {
+        margin-top: 1rem;
     }
 }
 
@@ -108,7 +112,7 @@
         font-family: $font-main;
         transition: $transition;
 
-        body.dark-mode & {
+        html.dark-mode & {
             border-color: $border-dark;
             background: $card-bg-dark;
             color: $text-dark;
@@ -157,7 +161,7 @@
     color: $text-light;
     transition: $transition;
 
-    body.dark-mode & {
+    html.dark-mode & {
         color: $text-dark;
     }
 
@@ -181,7 +185,7 @@
     position: relative;
     border: none; // La vraie bordure est dessinée par ::before
 
-    body.dark-mode & {
+    html.dark-mode & {
         background: $card-bg-dark;
     }
 

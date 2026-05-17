@@ -12,18 +12,15 @@ html {
 
 body {
     font-family: $font-main;
-    // Set a solid dark base on HTML/Body if we want, but letting canvas handle it is easier.
-    // Instead we put a subtle translucent background on body so the canvas shows through.
     background-color: rgba(248, 250, 252, 0.90);
     color: $text-light;
     line-height: 1.6;
     transition: $transition;
+}
 
-
-    &.dark-mode {
-        background-color: rgba(2, 6, 23, 0.85); // Matches new $bg-dark (#020617) with 85% opacity
-        color: $text-dark;
-    }
+html.dark-mode body {
+    background-color: rgba(2, 6, 23, 0.85);
+    color: $text-dark;
 }
 
 
@@ -156,4 +153,17 @@ img {
 .magnetic-wrap {
     display: inline-block;
     transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    .reveal,
+    .reveal.active {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
 }

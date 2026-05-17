@@ -21,28 +21,30 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;600;800&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💼</text></svg>">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="N'Baye Niang">
+    <meta property="og:url" content="https://portefoliobaye.netlify.app/">
+    <meta property="og:title" content="N'Baye Niang | Portfolio RNCP Epitech">
+    <meta property="og:description" content="Portfolio professionnel de N'Baye Niang, étudiant à Epitech. Showcase de projets et suivi pédagogique RNCP.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="og:image" content="https://portefoliobaye.netlify.app/image_profil.png">
+    <link rel="canonical" href="https://portefoliobaye.netlify.app/">
+    <script>
+        (function() {
+            const saved = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (saved === 'dark' || (!saved && prefersDark)) {
+                document.documentElement.classList.add('dark-mode');
+            }
+        })();
+    </script>
 </head>
 
 <body>
 
     <div id="app">
-        <header class="header">
-            <nav class="nav container">
-                <div class="nav__logo">
-                    <a href="/index.html" class="nav__logo-text">N'Baye Niang</a>
-                </div>
-
-                <ul class="nav__list">
-                    <li><a href="/index.html" class="nav__link nav__link--active">Accueil</a></li>
-                    <li><a href="/about.html" class="nav__link">Bio</a></li>
-                    <li><a href="/projects.html" class="nav__link">Projets</a></li>
-                    <li><a href="/pedagogical.html" class="nav__link">Pédagogique</a></li>
-                    <li><a href="/skills.html" class="nav__link">Compétences</a></li>
-                    <li><a href="/contact.html" class="nav__link">Contact</a></li>
-                </ul>
-
-            </nav>
-        </header>
+        <header class="header" id="site-header"></header>
 
         <main>
             <section id="hero" class="hero container reveal">
@@ -63,24 +65,20 @@
 
             <section id="vision" class="vision container section-padding reveal">
                 <h2 class="section-title">La Force de l'Hybride</h2>
-                <div class="vision__grid"
-                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-top: 3rem;">
-                    <div class="vision__card"
-                        style="background: var(--card-bg-light); padding: 2rem; border-radius: 1rem; border: 1px solid var(--border-light); text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: all 0.3s ease;">
-                        <i class="fas fa-boxes" style="font-size: 3rem; color: #6d28d9; margin-bottom: 1rem;"></i>
-                        <h3 style="font-family: 'Outfit'; margin-bottom: 1rem;">Vision Logistique</h3>
-                        <p style="color: #94a3b8; font-size: 0.95rem;">Compréhension approfondie de la Supply Chain.
+                <div class="vision__grid">
+                    <div class="vision__card">
+                        <i class="fas fa-boxes vision__icon"></i>
+                        <h3 class="vision__card-title">Vision Logistique</h3>
+                        <p class="vision__card-text">Compréhension approfondie de la Supply Chain.
                             Optimisation des flux physiques et d'information.</p>
                     </div>
-                    <div class="vision__card" style="display: flex; align-items: center; justify-content: center;">
-                        <i class="fas fa-arrow-right" style="font-size: 2rem; color: #0ea5e9;"></i>
+                    <div class="vision__card vision__card--arrow">
+                        <i class="fas fa-arrow-right vision__arrow"></i>
                     </div>
-                    <div class="vision__card"
-                        style="background: var(--card-bg-light); padding: 2rem; border-radius: 1rem; border: 1px solid var(--border-light); text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: all 0.3s ease;">
-                        <i class="fas fa-laptop-code"
-                            style="font-size: 3rem; color: #6d28d9; margin-bottom: 1rem;"></i>
-                        <h3 style="font-family: 'Outfit'; margin-bottom: 1rem;">Force Technique</h3>
-                        <p style="color: #94a3b8; font-size: 0.95rem;">Traduction des besoins métiers en solutions
+                    <div class="vision__card">
+                        <i class="fas fa-laptop-code vision__icon"></i>
+                        <h3 class="vision__card-title">Force Technique</h3>
+                        <p class="vision__card-text">Traduction des besoins métiers en solutions
                             applicatives performantes, sécurisées et scalables.</p>
                     </div>
                 </div>
@@ -88,7 +86,13 @@
         </main>
 
         <footer class="footer">
-            <div class="container"></div>
+            <div class="container">
+                <div class="footer__socials">
+                    <a href="https://www.linkedin.com/in/baye-niang-677981" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/niangb510" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="mailto:niangaffou@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
         </footer>
     </div>
     <script type="module" src="/src/scripts/main.js"></script>

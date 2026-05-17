@@ -1,9 +1,12 @@
 import '../styles/main.scss';
+import './header.js';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { initWebGLBackground } from './webgl.js';
 
 gsap.registerPlugin(ScrollTrigger);
+
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 // Contact Form Handling
 const contactForm = document.getElementById('contact-form');
@@ -11,10 +14,26 @@ if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
         e.preventDefault();
         const status = document.getElementById('form-status');
-        const formData = new FormData(contactForm);
-        const name = formData.get('name');
-        const email = formData.get('email');
-        const message = formData.get('message');
+        const name = contactForm.querySelector('#name').value.trim();
+        const email = contactForm.querySelector('#email').value.trim();
+        const message = contactForm.querySelector('#message').value.trim();
+
+        // Advanced validation
+        let errors = [];
+        if (!name) errors.push('Le nom est requis.');
+        if (!email) errors.push("L'email est requis.");
+        else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) errors.push("L'email n'est pas valide.");
+        if (!message) errors.push('Le message est requis.');
+        else if (message.length < 10) errors.push('Le message doit contenir au moins 10 caractères.');
+
+        if (errors.length > 0) {
+            status.innerHTML = errors.join('<br>');
+            status.classList.remove('hidden', 'success');
+            status.classList.add('error');
+            status.setAttribute('role', 'alert');
+            status.setAttribute('aria-live', 'polite');
+            return;
+        }
 
         const subject = encodeURIComponent(`Contact Portfolio de ${name}`);
         const body = encodeURIComponent(`De: ${name} (${email})\n\nMessage:\n${message}`);
@@ -23,6 +42,8 @@ if (contactForm) {
         status.innerHTML = "Votre application de messagerie va s'ouvrir pour envoyer le mail.";
         status.classList.remove('hidden', 'error');
         status.classList.add('success');
+        status.setAttribute('role', 'status');
+        status.setAttribute('aria-live', 'polite');
 
         setTimeout(() => {
             window.location.href = mailtoUrl;
@@ -32,6 +53,7 @@ if (contactForm) {
 
 // Reveal Animation Logic
 function initReveal() {
+    if (prefersReducedMotion) return;
     const revealElements = document.querySelectorAll('.reveal');
     if (revealElements.length === 0) return;
 
@@ -50,6 +72,8 @@ function initReveal() {
 
 // GSAP Dynamic Animations
 function initDynamicAnimations() {
+    if (prefersReducedMotion) return;
+
     // 1. Text reveal animation for section titles (excluding typewriter titles to avoid conflicts)
     const titles = document.querySelectorAll('.section-title:not(.typewriter-title)');
     titles.forEach(title => {
@@ -87,41 +111,45 @@ function initDynamicAnimations() {
         });
     }
 
-    // 3. Magnetic effect on nav links
-    const navLinks = document.querySelectorAll('.nav__link, .btn');
-    navLinks.forEach(link => {
-        link.addEventListener('mousemove', (e) => {
-            const rect = link.getBoundingClientRect();
-            const x = e.clientX - rect.left - rect.width / 2;
-            const y = e.clientY - rect.top - rect.height / 2;
+    // 3. Magnetic effect on nav links (desktop only)
+    if (window.matchMedia('(hover: hover)').matches) {
+        const navLinks = document.querySelectorAll('.nav__link, .btn');
+        navLinks.forEach(link => {
+            link.addEventListener('mousemove', (e) => {
+                const rect = link.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
 
-            gsap.to(link, {
-                x: x * 0.3,
-                y: y * 0.3,
-                duration: 0.3,
-                ease: "power2.out"
+                gsap.to(link, {
+                    x: x * 0.3,
+                    y: y * 0.3,
+                    duration: 0.3,
+                    ease: "power2.out"
+                });
+            });
+
+            link.addEventListener('mouseleave', () => {
+                gsap.to(link, {
+                    x: 0,
+                    y: 0,
+                    duration: 0.5,
+                    ease: "elastic.out(1, 0.3)"
+                });
             });
         });
-
-        link.addEventListener('mouseleave', () => {
-            gsap.to(link, {
-                x: 0,
-                y: 0,
-                duration: 0.5,
-                ease: "elastic.out(1, 0.3)"
-            });
-        });
-    });
+    }
 }
 
-// Typewriter Effect (applicable to any page)
+// Typewriter Effect
 function initTypewriterEffect() {
+    if (prefersReducedMotion) return;
     const titleElements = document.querySelectorAll('.typewriter-title');
     if (titleElements.length === 0) return;
 
     titleElements.forEach(titleElement => {
         const text = titleElement.textContent.trim();
         titleElement.innerHTML = '';
+        titleElement.setAttribute('aria-label', text);
         let i = 0;
 
         function typeWriter() {
@@ -144,7 +172,11 @@ document.addEventListener('DOMContentLoaded', () => {
     initReveal();
     initDynamicAnimations();
     initTypewriterEffect();
-    initWebGLBackground();
 
-
+    // Only initialize WebGL on the homepage to save resources
+    const path = window.location.pathname;
+    const isHomePage = path === '/' || path.endsWith('/index.html') || path === '';
+    if (isHomePage) {
+        initWebGLBackground();
+    }
 });

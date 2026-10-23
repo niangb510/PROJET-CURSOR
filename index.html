@@ -15,86 +15,281 @@
     <title>N'Baye Niang | Portfolio RNCP Epitech</title>
     <meta name="description"
         content="Portfolio professionnel de N'Baye Niang, étudiant à Epitech. Showcase de projets et suivi pédagogique RNCP.">
+    <meta name="theme-color" content="#000000">
+    <link rel="manifest" href="/manifest.json">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;600;800&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💼</text></svg>">
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='8' fill='%23000000'/><text x='32' y='42' font-family='monospace' font-size='24' fill='%23FF5A5A' text-anchor='middle'>NN</text></svg>">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="N'Baye Niang">
     <meta property="og:url" content="https://portefoliobaye.netlify.app/">
     <meta property="og:title" content="N'Baye Niang | Portfolio RNCP Epitech">
-    <meta property="og:description" content="Portfolio professionnel de N'Baye Niang, étudiant à Epitech. Showcase de projets et suivi pédagogique RNCP.">
+    <meta property="og:description"
+        content="Portfolio professionnel de N'Baye Niang, étudiant à Epitech. Showcase de projets et suivi pédagogique RNCP.">
     <meta name="twitter:card" content="summary_large_image">
-    <meta property="og:image" content="https://portefoliobaye.netlify.app/image_profil.png">
+    <meta name="twitter:title" content="N'Baye Niang | Portfolio RNCP Epitech">
+    <meta name="twitter:description"
+        content="Portfolio professionnel de N'Baye Niang, étudiant à Epitech. Showcase de projets et suivi pédagogique RNCP.">
+    <meta name="twitter:image" content="https://portefoliobaye.netlify.app/og-image.jpg">
+    <meta name="twitter:image:alt" content="N'Baye Niang, développeur web et solutions logistiques">
+    <meta property="og:image" content="https://portefoliobaye.netlify.app/og-image.jpg">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="N'Baye Niang, développeur web et solutions logistiques">
     <link rel="canonical" href="https://portefoliobaye.netlify.app/">
-    <script>
-        (function() {
-            const saved = localStorage.getItem('theme');
-            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            if (saved === 'dark' || (!saved && prefersDark)) {
-                document.documentElement.classList.add('dark-mode');
-            }
-        })();
-    </script>
 </head>
 
-<body>
+<body id="top">
+    <a class="skip-link" href="#contenu">Aller au contenu</a>
 
-    <div id="app">
-        <header class="header" id="site-header"></header>
+    <header class="site-header">
+        <div class="nav container">
+            <a class="nav__brand" href="/" aria-label="N'Baye Niang — accueil">n'baye@portfolio</a>
 
-        <main>
-            <section id="hero" class="hero container reveal">
+            <nav class="nav__menu" id="nav-menu" aria-label="Navigation principale">
+                <ul class="nav__links">
+                    <li><a class="nav__link" href="#projets">projets</a></li>
+                    <li><a class="nav__link" href="#bio">bio</a></li>
+                    <li><a class="nav__link" href="#competences">compétences</a></li>
+                    <li><a class="nav__link" href="/pedagogical.html">pédagogique</a></li>
+                    <li><a class="nav__link" href="#contact">contact</a></li>
+                </ul>
+                <div class="nav__actions">
+                    <span class="nav__status">disponible</span>
+                    <a class="nav__cta" href="/CV_NBaye_Niang.pdf" download aria-label="Télécharger le CV">[ cv ↓ ]</a>
+                </div>
+            </nav>
+
+            <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="nav-menu"
+                aria-label="Ouvrir le menu">[ menu ]</button>
+        </div>
+    </header>
+
+    <main id="contenu">
+        <!-- ===================== HERO ===================== -->
+        <section class="hero" id="accueil">
+            <div class="hero__canvas" id="hero-canvas" aria-hidden="true"></div>
+
+            <div class="container hero__grid">
                 <div class="hero__content">
-                    <h1 class="hero__title typewriter-title">Développeur Web & Solutions Logistiques</h1>
-                    <p class="hero__subtitle">Étudiant à Epitech, je transforme des défis complexes en solutions
-                        numériques élégantes et performantes.</p>
+                    <h1 class="hero__title">N'Baye Niang</h1>
+                    <p class="hero__role">Développeur Web &amp; Solutions Logistiques<span class="cursor"
+                            aria-hidden="true"></span></p>
+                    <p class="hero__lead">Étudiant à Epitech, je transforme des défis complexes en solutions numériques
+                        élégantes et performantes.</p>
+                    <p class="hero__status">disponible</p>
                     <div class="hero__actions">
-                        <a href="/projects.html" class="btn btn--primary">Voir mes projets</a>
-                        <a href="/CV_NBaye_Niang.pdf" class="btn btn--secondary" download>Télécharger mon
-                            CV <i class="fas fa-download"></i></a>
+                        <a class="btn btn--primary" href="#projets">Voir mes projets <span
+                                aria-hidden="true">→</span></a>
+                        <a class="btn btn--ghost" href="/CV_NBaye_Niang.pdf" download>Télécharger mon CV <span
+                                aria-hidden="true">↓</span></a>
                     </div>
                 </div>
-                <div class="hero__image-wrapper">
-                    <img src="/image_profil.png" alt="N'Baye Niang" class="hero__image">
-                </div>
-            </section>
 
-            <section id="vision" class="vision container section-padding reveal">
-                <h2 class="section-title">La Force de l'Hybride</h2>
-                <div class="vision__grid">
-                    <div class="vision__card">
-                        <i class="fas fa-boxes vision__icon"></i>
-                        <h3 class="vision__card-title">Vision Logistique</h3>
-                        <p class="vision__card-text">Compréhension approfondie de la Supply Chain.
-                            Optimisation des flux physiques et d'information.</p>
+                <aside class="profile" aria-label="Profil">
+                    <div class="profile__bar" aria-hidden="true">
+                        <span class="profile__dot"></span>
+                        <span class="profile__dot"></span>
+                        <span class="profile__dot"></span>
+                        <span class="profile__bar-title">n'baye@portfolio — profil</span>
+                    </div>                    <div class="profile__body">
+                        <img class="profile__photo" src="/image_profil.webp" alt="Portrait de N'Baye Niang"
+                            width="380" height="475">
+                        <div class="profile__info">
+                            <p class="profile__name">N'Baye Niang</p>
+                            <p class="profile__role">Étudiant à Epitech</p>
+                        </div>
                     </div>
-                    <div class="vision__card vision__card--arrow">
-                        <i class="fas fa-arrow-right vision__arrow"></i>
-                    </div>
-                    <div class="vision__card">
-                        <i class="fas fa-laptop-code vision__icon"></i>
-                        <h3 class="vision__card-title">Force Technique</h3>
-                        <p class="vision__card-text">Traduction des besoins métiers en solutions
-                            applicatives performantes, sécurisées et scalables.</p>
-                    </div>
-                </div>
-            </section>
-        </main>
+                </aside>
+            </div>
+        </section>
 
-        <footer class="footer">
+        <!-- ===================== PROJETS ===================== -->
+        <section class="section" id="projets">
             <div class="container">
-                <div class="footer__socials">
-                    <a href="https://www.linkedin.com/in/baye-niang-677981" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://github.com/niangb510" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                    <a href="mailto:niangaffou@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                <p class="label"><span class="label__mark" aria-hidden="true">//</span> 01 — projets</p>
+                <h2 class="section__title">Projets Marquants</h2>
+
+                <div class="projects__list">
+                    <article class="project" data-reveal>
+                        <div class="project__preview preview">
+                            <div class="preview__bar" aria-hidden="true">
+                                <span class="preview__dot"></span>
+                                <span class="preview__dot"></span>
+                                <span class="preview__dot"></span>
+                                <span class="preview__url">ni-conseils-managements.netlify.app</span>
+                            </div>
+                            <img class="preview__img" src="/previews/ni-conseils.jpg"
+                                alt="Aperçu du site N.I. Conseils &amp; Managements" width="780" height="468"
+                                loading="lazy">
+                        </div>
+
+                        <div class="project__content">
+                            <p class="project__meta">
+                                <span class="project__index">01</span>
+                                <span class="project__tag">Développer une interface utilisateur</span>
+                            </p>
+                            <h3 class="project__title">Site Web pour Agent de Football</h3>
+                            <p class="project__desc">Site vitrine complet avec gestion de formulaires et présentation
+                                de joueurs.</p>
+                            <p class="project__stack">HTML5 · CSS3 · JS · PWA · Font Awesome</p>
+                            <a class="project__link" href="https://ni-conseils-managements.netlify.app/"
+                                target="_blank" rel="noopener noreferrer"><span aria-hidden="true">↗</span> Voir le
+                                site</a>
+                        </div>
+
+                        <a class="project__arrow" href="https://ni-conseils-managements.netlify.app/" target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="Voir le site Site Web pour Agent de Football (nouvel onglet)">↗</a>
+                    </article>
+
+                    <article class="project" data-reveal>
+                        <div class="project__preview preview">
+                            <div class="preview__bar" aria-hidden="true">
+                                <span class="preview__dot"></span>
+                                <span class="preview__dot"></span>
+                                <span class="preview__dot"></span>
+                                <span class="preview__url">portefoliobaye.netlify.app</span>
+                            </div>
+                            <img class="preview__img" src="/previews/portfolio.jpg"
+                                alt="Aperçu du portfolio de N'Baye Niang" width="780" height="468" loading="lazy">
+                        </div>
+
+                        <div class="project__content">
+                            <p class="project__meta">
+                                <span class="project__index">02</span>
+                                <span class="project__tag">Architecture &amp; Design</span>
+                            </p>
+                            <h3 class="project__title">Portfolio Professionnel</h3>
+                            <p class="project__desc">Une vitrine immersive alliant design minimaliste et performances
+                                WebGL.</p>
+                            <p class="project__stack">Vite · Sass · GSAP · Three.js</p>
+                            <a class="project__link" href="https://portefoliobaye.netlify.app/" target="_blank"
+                                rel="noopener noreferrer"><span aria-hidden="true">↗</span> Voir le site</a>
+                        </div>
+
+                        <a class="project__arrow" href="https://portefoliobaye.netlify.app/" target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="Voir le site Portfolio Professionnel (nouvel onglet)">↗</a>
+                    </article>
                 </div>
             </div>
-        </footer>
-    </div>
+        </section>
+
+        <!-- ===================== BIO ===================== -->
+        <section class="section" id="bio">
+            <div class="container">
+                <p class="label"><span class="label__mark" aria-hidden="true">//</span> 02 — bio</p>
+                <h2 class="section__title">Ma Philosophie</h2>
+
+                <p class="bio__lead">Passionné par l'intersection entre la technologie et l'efficacité opérationnelle,
+                    j'aborde chaque projet avec une vision holistique. Mon parcours hybride entre la logistique et le
+                    développement informatique me permet de comprendre les besoins métiers profonds avant de coder la
+                    moindre ligne.</p>
+
+                <blockquote class="bio__quote">Ma démarche repose sur trois piliers : la rigueur technique,
+                    l'adaptabilité constante et la recherche de l'impact utilisateur.</blockquote>
+
+                <h3 class="bio__heading">La Force de l'Hybride</h3>
+
+                <p class="tree__root">philosophie/</p>
+                <ul class="tree">
+                    <li class="tree__item">
+                        <h4 class="tree__title">Vision Logistique</h4>
+                        <p class="tree__text">Compréhension approfondie de la Supply Chain. Optimisation des flux
+                            physiques et d'information.</p>
+                    </li>
+                    <li class="tree__item">
+                        <h4 class="tree__title">Force Technique</h4>
+                        <p class="tree__text">Traduction des besoins métiers en solutions applicatives performantes,
+                            sécurisées et scalables.</p>
+                    </li>
+                </ul>
+
+                <div class="interests">
+                    <p class="interests__label">Centres d'intérêt</p>
+                    <ul class="interests__list">
+                        <li class="interests__item">Tech &amp; Innovation</li>
+                        <li class="interests__item">Supply Chain</li>
+                        <li class="interests__item">Sports collectifs</li>
+                        <li class="interests__item">Culture musicale</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== COMPÉTENCES ===================== -->
+        <section class="section" id="competences">
+            <div class="container">
+                <p class="label"><span class="label__mark" aria-hidden="true">//</span> 03 — compétences</p>
+                <h2 class="section__title">Compétences</h2>
+
+                <dl class="stack">
+                    <div class="stack__row">
+                        <dt>Développement</dt>
+                        <dd>HTML5/CSS3 · JavaScript (ES6+) · Python · PHP · SQL / NoSQL</dd>
+                    </div>
+                    <div class="stack__row">
+                        <dt>Outils &amp; DevOps</dt>
+                        <dd>Git / GitHub · Docker · Vite · BEM Methodology</dd>
+                    </div>
+                    <div class="stack__row">
+                        <dt>Logistique</dt>
+                        <dd>Gestion de stock · WMS/TMS · Supply Chain</dd>
+                    </div>
+                </dl>
+            </div>
+        </section>
+
+        <!-- ===================== PÉDAGOGIQUE ===================== -->
+        <section class="section" id="pedagogique">
+            <div class="container">
+                <p class="label"><span class="label__mark" aria-hidden="true">//</span> 04 — pédagogique</p>
+                <h2 class="section__title">Suivi Pédagogique &amp; RNCP</h2>
+                <p class="section__intro">Espace dédié aux tuteurs pour documenter ma progression et la validation des
+                    blocs de compétences.</p>
+
+                <div class="teaser" data-reveal>
+                    <div>
+                        <p class="teaser__title">Journal de Bord des Projets</p>
+                        <p class="teaser__sub">Progression &amp; Compétences · Erreurs &amp; Solutions</p>
+                    </div>
+                    <a class="teaser__link" href="/pedagogical.html">[ Voir le suivi pédagogique <span
+                            aria-hidden="true">↗</span> ]</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== CONTACT ===================== -->
+        <section class="section contact" id="contact">
+            <div class="container">
+                <p class="label"><span class="label__mark" aria-hidden="true">//</span> 05 — contact</p>
+                <h2 class="section__title">Me Contacter</h2>
+
+                <a class="contact__email" href="mailto:niangaffou@gmail.com">niangaffou@gmail.com</a>
+
+                <div class="contact__links">
+                    <a href="https://www.linkedin.com/in/baye-niang-677981" target="_blank"
+                        rel="noopener noreferrer">[ LinkedIn ↗ ]</a>
+                    <a href="https://github.com/niangb510" target="_blank" rel="noopener noreferrer">[ GitHub ↗ ]</a>
+                    <a href="/CV_NBaye_Niang.pdf" download>[ Télécharger mon CV ↓ ]</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer__inner">
+            <p>© 2026 N'Baye Niang</p>
+            <a href="#top">Retour en haut ↑</a>
+        </div>
+    </footer>
+
     <script type="module" src="/src/scripts/main.js"></script>
 </body>
 

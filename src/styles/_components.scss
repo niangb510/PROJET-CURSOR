@@ -1,246 +1,643 @@
 @use 'variables' as *;
 
-// Project Cards
-.projects__grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-    gap: 2.5rem;
+// ---------------------------------------------------------------
+// Carte profil (hero)
+// ---------------------------------------------------------------
+.profile {
+    justify-self: end;
+    width: 100%;
+    max-width: 420px;
+    overflow: hidden;
+    background: $panel;
+    border: 1px solid #1e1e1e;
+    border-radius: 6px;
+
+    &__bar {
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        height: 36px;
+        padding: 0 1.25rem;
+        border-bottom: 1px solid $line;
+    }
+
+    &__dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: $line-strong;
+    }
+
+    &__bar-title {
+        margin-left: 0.55rem;
+        font-family: $font-mono;
+        font-size: 0.68rem;
+        color: $faint;
+    }
+
+    &__body {
+        padding: 1.25rem 1.25rem 1.5rem;
+    }
+
+    &__photo {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 4 / 5;
+        object-fit: cover;
+        border-radius: 2px;
+    }
+
+    &__info {
+        margin-top: 1.1rem;
+    }
+
+    &__name {
+        font-family: $font-mono;
+        font-size: 1.35rem;
+        line-height: 1.3;
+        color: $text-strong;
+    }
+
+    &__role {
+        margin-top: 0.45rem;
+        font-family: $font-mono;
+        font-size: 0.85rem;
+        color: $muted;
+    }
+
 }
 
-.project-card {
-    background: $card-bg-light;
-    border-radius: 1rem;
-    overflow: hidden;
-    border: 1px solid $border-light;
-    transition: $transition;
+// ---------------------------------------------------------------
+// Projets
+// ---------------------------------------------------------------
+.projects__list {
+    margin-top: 3rem;
+}
 
-    html.dark-mode & {
-        background: $card-bg-dark;
-        border-color: $border-dark;
-    }
+.project {
+    display: grid;
+    grid-template-columns: 260px minmax(0, 1fr) 2rem;
+    gap: 2.5rem;
+    padding: 2.4rem 0;
+    border-bottom: 1px solid $line;
 
-    &:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-    }
-
-    &__image {
-        width: 100%;
-        height: 200px;
-        object-fit: cover;
+    &:first-child {
+        padding-top: 0;
     }
 
     &__content {
-        padding: 1.5rem;
+        min-width: 0;
+        padding-top: 0.15rem;
+    }
+
+    &__meta {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: baseline;
+        gap: 0.8rem;
+        font-family: $font-mono;
+        font-size: 0.7rem;
+    }
+
+    &__index {
+        color: $accent;
+    }
+
+    &__tag {
+        color: $faint;
     }
 
     &__title {
-        font-family: $font-heading;
-        font-size: 1.5rem;
-        margin-bottom: 0.75rem;
+        margin-top: 0.85rem;
+        font-family: $font-mono;
+        font-size: 1.06rem;
+        font-weight: 500;
+        color: $text-strong;
     }
 
-    &__description {
-        color: $secondary;
+    &__desc {
+        max-width: 44rem;
+        margin-top: 0.85rem;
         font-size: 0.95rem;
-        margin-bottom: 1.5rem;
+        line-height: 1.7;
+        color: $muted;
     }
 
-    &__tags {
+    &__stack {
+        margin-top: 1.3rem;
+        font-family: $font-mono;
+        font-size: 0.72rem;
+        color: $muted;
+    }
+
+    &__link {
+        display: inline-flex;
+        gap: 0.45rem;
+        margin-top: 1.1rem;
+        font-family: $font-mono;
+        font-size: 0.72rem;
+        color: $muted;
+
+        span {
+            color: $accent;
+        }
+
+        &:hover {
+            color: $accent;
+        }
+    }
+
+    &__arrow {
+        justify-self: end;
+        font-family: $font-mono;
+        font-size: 1rem;
+        color: $accent;
+
+        &:hover {
+            color: $accent-hover;
+        }
+    }
+}
+
+.preview {
+    overflow: hidden;
+    background: $panel-soft;
+    border: 1px solid $line-strong;
+    border-radius: $radius;
+
+    &__bar {
         display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-        margin-bottom: 1rem;
+        align-items: center;
+        gap: 4px;
+        height: 26px;
+        padding: 0 12px;
+        background: #181818;
+        border-bottom: 1px solid $line-strong;
     }
 
-    &__rncp {
-        font-size: 0.75rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        color: $primary;
-        display: block;
-        margin-bottom: 0.5rem;
+    &__dot {
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        background: #3c3c3c;
     }
 
-    &__actions {
-        margin-top: 1rem;
+    &__url {
+        margin-left: 8px;
+        overflow: hidden;
+        font-family: $font-mono;
+        font-size: 0.5rem;
+        color: $faint;
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }
-}
 
-.tag {
-    background: rgba($primary, 0.1);
-    color: $primary;
-    padding: 0.25rem 0.75rem;
-    border-radius: 2rem;
-    font-size: 0.8rem;
-    font-weight: 600;
-}
-
-// Contact Form
-.contact__grid {
-    display: grid;
-    grid-template-columns: 0.8fr 1.2fr;
-    gap: 4rem;
-
-    @media (max-width: $tablet) {
-        grid-template-columns: 1fr;
+    &__img {
+        width: 100%;
+        aspect-ratio: 5 / 3;
+        object-fit: cover;
+        object-position: top center;
     }
 }
 
-.contact__form {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-}
-
-.form__group {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-
-    label {
-        font-weight: 600;
-        font-size: 0.9rem;
+@media (max-width: $tablet) {
+    .project {
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 1.5rem;
+        padding: 2rem 0;
     }
 
-    input,
-    textarea {
-        padding: 0.75rem 1rem;
-        border-radius: 0.5rem;
-        border: 1px solid $border-light;
-        background: $card-bg-light;
-        font-family: $font-main;
-        transition: $transition;
+    .project__preview {
+        grid-column: 1 / -1;
+    }
 
-        html.dark-mode & {
-            border-color: $border-dark;
-            background: $card-bg-dark;
-            color: $text-dark;
+    .project__content {
+        grid-column: 1 / 2;
+    }
+
+    .project__arrow {
+        grid-column: 2 / 3;
+        grid-row: 2;
+        align-self: start;
+    }
+}
+
+// ---------------------------------------------------------------
+// Bio / philosophie
+// ---------------------------------------------------------------
+.bio {
+    &__lead {
+        max-width: 56rem;
+        margin-top: 2rem;
+        font-size: 1rem;
+        line-height: 1.85;
+        color: $muted;
+    }
+
+    &__quote {
+        max-width: 52rem;
+        margin-top: 2.75rem;
+        padding-left: 1.75rem;
+        border-left: 3px solid $accent;
+        font-size: 1.45rem;
+        font-weight: 500;
+        line-height: 1.5;
+        letter-spacing: -0.015em;
+        color: $text-strong;
+    }
+
+    &__heading {
+        margin-top: 3.25rem;
+        font-family: $font-mono;
+        font-size: 1.1rem;
+        font-weight: 500;
+        color: $text-strong;
+    }
+}
+
+.interests {
+    margin-top: 3.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid $line;
+
+    &__label {
+        font-family: $font-mono;
+        font-size: 0.72rem;
+        letter-spacing: 0.02em;
+        color: $muted;
+    }
+
+    &__list {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 1rem 2rem;
+        margin-top: 1.2rem;
+    }
+
+    &__item {
+        display: flex;
+        gap: 0.55rem;
+        font-family: $font-mono;
+        font-size: 0.78rem;
+        color: $text;
+
+        &::before {
+            content: '›';
+            color: $accent;
         }
-
-        &:focus {
-            outline: none;
-            border-color: $primary;
-            box-shadow: 0 0 0 3px rgba($primary, 0.1);
-        }
-    }
-
-    textarea {
-        min-height: 150px;
-        resize: vertical;
     }
 }
 
-.form-status {
-    margin-top: 1rem;
-    padding: 1rem;
-    border-radius: 0.5rem;
-    font-size: 0.9rem;
-    font-weight: 500;
-    text-align: center;
-
-    &.success {
-        background: rgba(#10b981, 0.1);
-        color: #059669;
-        border: 1px solid #10b981;
-    }
-
-    &.error {
-        background: rgba(#ef4444, 0.1);
-        color: #dc2626;
-        border: 1px solid #ef4444;
+@media (max-width: $tablet) {
+    .interests__list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 }
 
-// Theme Toggle
-.theme-toggle {
-    background: none;
-    border: none;
-    font-size: 1.25rem;
-    cursor: pointer;
-    color: $text-light;
-    transition: $transition;
-
-    html.dark-mode & {
-        color: $text-dark;
-    }
-
-    &:hover {
-        color: $primary;
-    }
-}
-
-@property --border-angle {
-    syntax: "<angle>";
-    inherits: true;
-    initial-value: 0turn;
-}
-
-// Pedagogical List
-.pedagogical-item {
-    background: $card-bg-light;
-    border-radius: 1rem;
-    padding: 2rem;
-    margin-bottom: 2rem;
+.tree {
     position: relative;
-    border: none; // La vraie bordure est dessinée par ::before
+    margin-top: 1.4rem;
+    padding-left: 2rem;
 
-    html.dark-mode & {
-        background: $card-bg-dark;
+    &__root {
+        margin-top: 1.6rem;
+        font-family: $font-mono;
+        font-size: 0.82rem;
+        color: $text-strong;
     }
 
     &::before {
         content: '';
         position: absolute;
-        inset: 0;
-        border-radius: 1rem;
-        padding: 3px; // C'est l'épaisseur de la bordure arc-en-ciel
-        background: conic-gradient(
-            from var(--border-angle),
-            #ff0000, #ff7700, #ffff00, #00ff00,
-            #0000ff, #8b00ff, #ff0000
-        );
-        // Le secret magique : ce masque évide (troue) le centre exactement au pixel près
-        -webkit-mask:
-            linear-gradient(#fff 0 0) content-box,
-            linear-gradient(#fff 0 0);
-        -webkit-mask-composite: xor;
-        mask-composite: exclude;
-        pointer-events: none;
-        animation: spin-rainbow 4s linear infinite;
+        left: 0.4rem;
+        top: 1.3rem;
+        bottom: 1.55rem;
+        width: 1px;
+        background: $line-strong;
     }
 
-    @keyframes spin-rainbow {
-        to { --border-angle: 1turn; }
+    &__item {
+        position: relative;
+        padding: 0 0 1.5rem 1.4rem;
+
+        &:last-child {
+            padding-bottom: 0;
+        }
+
+        &::before {
+            content: '';
+            position: absolute;
+            left: -1.6rem;
+            top: 0.55rem;
+            width: 1.6rem;
+            height: 1px;
+            background: $line-strong;
+        }
     }
 
-    &__header {
+    &__title {
+        font-family: $font-mono;
+        font-size: 0.85rem;
+        font-weight: 500;
+        color: $text-strong;
+    }
+
+    &__text {
+        max-width: 56rem;
+        margin-top: 0.5rem;
+        font-family: $font-mono;
+        font-size: 0.75rem;
+        line-height: 1.75;
+        color: $muted;
+    }
+}
+
+@media (max-width: $mobile) {
+    .bio__quote {
+        padding-left: 1.1rem;
+        font-size: 1.05rem;
+    }
+
+    .interests__list {
+        grid-template-columns: 1fr;
+    }
+
+    .tree {
+        padding-left: 1.25rem;
+
+        &::before {
+            left: 0.25rem;
+        }
+
+        &__item {
+            padding-left: 1rem;
+
+            &::before {
+                left: -1rem;
+                width: 1rem;
+            }
+        }
+    }
+}
+
+// ---------------------------------------------------------------
+// Compétences
+// ---------------------------------------------------------------
+.stack {
+    margin-top: 2.5rem;
+    border-top: 1px solid $line;
+
+    &__row {
+        display: grid;
+        grid-template-columns: 180px minmax(0, 1fr);
+        gap: 2rem;
+        padding: 1.4rem 0;
+        border-bottom: 1px solid $line;
+    }
+
+    dt {
+        font-family: $font-mono;
+        font-size: 0.8rem;
+        color: $accent;
+    }
+
+    dd {
+        font-family: $font-mono;
+        font-size: 0.85rem;
+        line-height: 1.7;
+        color: #dcdcda;
+    }
+}
+
+@media (max-width: $mobile) {
+    .stack__row {
+        grid-template-columns: 1fr;
+        gap: 0.45rem;
+        padding: 1.1rem 0;
+    }
+}
+
+// ---------------------------------------------------------------
+// Bandeau suivi pédagogique
+// ---------------------------------------------------------------
+.teaser {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-top: 2.5rem;
+    padding: 1.75rem 2rem;
+    background: $panel;
+    border: 1px solid #1e1e1e;
+    border-radius: $radius;
+
+    &__title {
+        margin-top: 0.2rem;
+        font-family: $font-mono;
+        font-size: 1rem;
+        color: $text-strong;
+    }
+
+    &__sub {
+        margin-top: 0.4rem;
+        font-family: $font-mono;
+        font-size: 0.7rem;
+        color: $faint;
+    }
+
+    &__link {
+        flex: none;
+        font-family: $font-mono;
+        font-size: 0.75rem;
+        color: $accent;
+
+        &:hover {
+            color: $accent-hover;
+        }
+    }
+}
+
+@media (max-width: $tablet) {
+    .teaser {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.5rem;
+        padding: 1.5rem;
+    }
+}
+
+// ---------------------------------------------------------------
+// Contact
+// ---------------------------------------------------------------
+.contact {
+    padding-bottom: 5rem;
+
+    &__email {
+        display: inline-block;
+        max-width: 100%;
+        margin-top: 1.75rem;
+        font-family: $font-mono;
+        font-size: clamp(1.5rem, 3.4vw, 2.5rem);
+        font-weight: 500;
+        line-height: 1.2;
+        letter-spacing: -0.03em;
+        color: $accent;
+        word-break: break-word;
+
+        &:hover {
+            color: $accent-hover;
+        }
+    }
+
+    &__links {
         display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 1.5rem;
+        flex-wrap: wrap;
+        gap: 2rem;
+        margin-top: 2.5rem;
+        font-family: $font-mono;
+        font-size: 0.78rem;
+        color: $text;
+
+        a:hover {
+            color: $accent;
+        }
+    }
+}
+
+@media (max-width: $mobile) {
+    .contact {
+        padding-bottom: 3.5rem;
     }
 
-    &__analysis {
+    .contact__links {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
+
+// ---------------------------------------------------------------
+// Page pédagogique / journal RNCP
+// ---------------------------------------------------------------
+.rncp-media {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.rncp-figure {
+    margin: 0;
+    padding: 0.6rem;
+    background: $panel;
+    border: 1px solid $line-strong;
+    border-radius: $radius;
+
+    img {
+        width: 100%;
+        height: auto;
+    }
+}
+
+.journal {
+    margin-top: 4.5rem;
+
+    &__title {
+        font-family: $font-mono;
+        font-size: 1.15rem;
+        font-weight: 500;
+        color: $text-strong;
+    }
+}
+
+.log {
+    margin-top: 1.75rem;
+    padding: 2rem;
+    background: $panel;
+    border: 1px solid #1e1e1e;
+    border-radius: $radius;
+
+    &__head {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 0.75rem;
+    }
+
+    &__title {
+        font-family: $font-mono;
+        font-size: 1rem;
+        font-weight: 500;
+        color: $text-strong;
+    }
+
+    &__tag {
+        font-family: $font-mono;
+        font-size: 0.7rem;
+        color: $accent;
+    }
+
+    &__grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 2rem;
-
-        @media (max-width: $tablet) {
-            grid-template-columns: 1fr;
-        }
+        margin-top: 1.5rem;
     }
 
     &__block {
-        h4 {
-            font-family: $font-heading;
-            margin-bottom: 0.5rem;
-            color: $primary;
+        h3 {
+            margin-bottom: 0.6rem;
+            font-family: $font-mono;
+            font-size: 0.66rem;
+            font-weight: 400;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: $faint;
         }
 
         p {
-            font-size: 0.9rem;
-            color: $secondary;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: $muted;
         }
+
+        p + p {
+            margin-top: 0.5rem;
+        }
+
+        strong {
+            color: $text;
+            font-weight: 500;
+        }
+    }
+}
+
+.backlink {
+    display: inline-flex;
+    gap: 0.5rem;
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+    font-family: $font-mono;
+    font-size: 0.78rem;
+    color: $muted;
+
+    &:hover {
+        color: $accent;
+    }
+}
+
+@media (max-width: $tablet) {
+    .rncp-media {
+        grid-template-columns: 1fr;
+    }
+
+    .log {
+        padding: 1.5rem;
+    }
+
+    .log__grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
     }
 }

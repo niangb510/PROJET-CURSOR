@@ -4,3 +4,44 @@
 
 [build.environment]
   NODE_VERSION = "20"
+
+# Anciennes pages supprimées : on renvoie vers les sections correspondantes.
+[[redirects]]
+  from = "/about.html"
+  to = "/#bio"
+  status = 301
+
+[[redirects]]
+  from = "/about"
+  to = "/#bio"
+  status = 301
+
+[[redirects]]
+  from = "/projects.html"
+  to = "/#projets"
+  status = 301
+
+[[redirects]]
+  from = "/projects"
+  to = "/#projets"
+  status = 301
+
+[[redirects]]
+  from = "/skills.html"
+  to = "/#competences"
+  status = 301
+
+[[redirects]]
+  from = "/skills"
+  to = "/#competences"
+  status = 301
+
+[[redirects]]
+  from = "/contact.html"
+  to = "/#contact"
+  status = 301
+
+[[redirects]]
+  from = "/contact"
+  to = "/#contact"
+  status = 301

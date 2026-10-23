@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 
+
 <head>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-99KJJ0E8LY"></script>
@@ -13,106 +14,142 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Suivi Pédagogique | N'Baye Niang</title>
-    <meta name="description" content="Suivi pédagogique RNCP de N'Baye Niang - Progression et validation des compétences.">
+    <meta name="description"
+        content="Suivi pédagogique RNCP de N'Baye Niang - Progression et validation des compétences.">
+    <meta name="theme-color" content="#000000">
+    <link rel="manifest" href="/manifest.json">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;600;800&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💼</text></svg>">
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='8' fill='%23000000'/><text x='32' y='42' font-family='monospace' font-size='24' fill='%23FF5A5A' text-anchor='middle'>NN</text></svg>">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="N'Baye Niang">
     <meta property="og:url" content="https://portefoliobaye.netlify.app/pedagogical.html">
     <meta property="og:title" content="Suivi Pédagogique | N'Baye Niang">
-    <meta property="og:description" content="Suivi pédagogique RNCP de N'Baye Niang - Progression et validation des compétences.">
+    <meta property="og:description"
+        content="Suivi pédagogique RNCP de N'Baye Niang - Progression et validation des compétences.">
     <meta name="twitter:card" content="summary_large_image">
-    <meta property="og:image" content="https://portefoliobaye.netlify.app/image_profil.png">
+    <meta name="twitter:title" content="Suivi Pédagogique | N'Baye Niang">
+    <meta name="twitter:description"
+        content="Suivi pédagogique RNCP de N'Baye Niang - Progression et validation des compétences.">
+    <meta name="twitter:image" content="https://portefoliobaye.netlify.app/og-image.jpg">
+    <meta name="twitter:image:alt" content="N'Baye Niang, développeur web et solutions logistiques">
+    <meta property="og:image" content="https://portefoliobaye.netlify.app/og-image.jpg">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="N'Baye Niang, développeur web et solutions logistiques">
     <link rel="canonical" href="https://portefoliobaye.netlify.app/pedagogical.html">
-    <script>
-        (function() {
-            const saved = localStorage.getItem('theme');
-            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            if (saved === 'dark' || (!saved && prefersDark)) {
-                document.documentElement.classList.add('dark-mode');
-            }
-        })();
-    </script>
 </head>
 
-<body>
+<body id="top">
+    <a class="skip-link" href="#contenu">Aller au contenu</a>
 
-    <div id="app">
-        <header class="header" id="site-header"></header>
+    <header class="site-header">
+        <div class="nav container">
+            <a class="nav__brand" href="/" aria-label="N'Baye Niang — accueil">n'baye@portfolio</a>
 
-        <main>
-            <section class="container section-padding reveal">
-                <h1 class="section-title typewriter-title">Suivi Pédagogique &amp; RNCP</h1>
-                <p class="section-intro">Espace dédié aux tuteurs pour documenter ma progression et la validation
-                    des blocs de compétences.</p>
+            <nav class="nav__menu" id="nav-menu" aria-label="Navigation principale">
+                <ul class="nav__links">
+                    <li><a class="nav__link" href="/#projets">projets</a></li>
+                    <li><a class="nav__link" href="/#bio">bio</a></li>
+                    <li><a class="nav__link" href="/#competences">compétences</a></li>
+                    <li><a class="nav__link" href="/pedagogical.html" aria-current="page">pédagogique</a></li>
+                    <li><a class="nav__link" href="/#contact">contact</a></li>
+                </ul>
+                <div class="nav__actions">
+                    <span class="nav__status">disponible</span>
+                    <a class="nav__cta" href="/CV_NBaye_Niang.pdf" download aria-label="Télécharger le CV">[ cv ↓ ]</a>
+                </div>
+            </nav>
 
-                <div class="rncp-blocks">
-                    <div class="rncp-block">
-                        <img src="/suivi-pedagogique-1.png" alt="Suivi Pédagogique 1" class="rncp-image" loading="lazy">
-                    </div>
-                    <div class="rncp-block">
-                        <img src="/suivi-pedagogique-2.png" alt="Suivi Pédagogique 2" class="rncp-image" loading="lazy">
-                    </div>
+            <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="nav-menu"
+                aria-label="Ouvrir le menu">[ menu ]</button>
+        </div>
+    </header>
+
+    <main id="contenu">
+        <!-- ===================== EN-TÊTE ===================== -->
+        <section class="page-hero">
+            <div class="container">
+                <p class="label"><span class="label__mark" aria-hidden="true">//</span> documentation</p>
+                <h1 class="section__title page-hero__title">Suivi Pédagogique &amp; RNCP</h1>
+                <p class="section__intro">Espace dédié aux tuteurs pour documenter ma progression et la validation des
+                    blocs de compétences.</p>
+            </div>
+        </section>
+
+        <!-- ===================== DOCUMENTS ===================== -->
+        <section class="section">
+            <div class="container">
+                <div class="rncp-media">
+                    <figure class="rncp-figure" data-reveal>
+                        <img src="/suivi-pedagogique-1.png" alt="Suivi pédagogique 1" loading="lazy">
+                    </figure>
+                    <figure class="rncp-figure" data-reveal>
+                        <img src="/suivi-pedagogique-2.png" alt="Suivi pédagogique 2" loading="lazy">
+                    </figure>
                 </div>
 
-                <div class="pedagogical-projects">
-                    <h2 class="section-subtitle">Journal de Bord des Projets</h2>
+                <!-- ===================== JOURNAL ===================== -->
+                <div class="journal">
+                    <h2 class="journal__title">Journal de Bord des Projets</h2>
 
-                    <div class="pedagogical-item">
-                        <div class="pedagogical-item__header">
-                            <h3>Site Web pour Agent de Football</h3>
-                            <span class="tag">Développer une interface utilisateur</span>
+                    <article class="log" data-reveal>
+                        <div class="log__head">
+                            <h3 class="log__title">Site Web pour Agent de Football</h3>
+                            <span class="log__tag">Développer une interface utilisateur</span>
                         </div>
-                        <div class="pedagogical-item__analysis">
-                            <div class="pedagogical-item__block">
-                                <h4>Progression &amp; Compétences</h4>
+                        <div class="log__grid">
+                            <div class="log__block">
+                                <h3>Progression &amp; Compétences</h3>
                                 <p>Maîtrise de la structure sémantique et du responsive design.</p>
                             </div>
-                            <div class="pedagogical-item__block">
-                                <h4>Erreurs &amp; Solutions</h4>
-                                <p><strong>Problème :</strong> Difficultés initiales avec la validation des formulaires côté client.</p>
-                                <p><strong>Solution :</strong> Implémentation de Regex personnalisées et de retours visuels immédiats.</p>
+                            <div class="log__block">
+                                <h3>Erreurs &amp; Solutions</h3>
+                                <p><strong>Problème :</strong> Difficultés initiales avec la validation des formulaires
+                                    côté client.</p>
+                                <p><strong>Solution :</strong> Implémentation de Regex personnalisées et de retours
+                                    visuels immédiats.</p>
                             </div>
                         </div>
-                    </div>
+                    </article>
 
-                    <div class="pedagogical-item">
-                        <div class="pedagogical-item__header">
-                            <h3>Portfolio Professionnel</h3>
-                            <span class="tag">Architecture &amp; Design</span>
+                    <article class="log" data-reveal>
+                        <div class="log__head">
+                            <h3 class="log__title">Portfolio Professionnel</h3>
+                            <span class="log__tag">Architecture &amp; Design</span>
                         </div>
-                        <div class="pedagogical-item__analysis">
-                            <div class="pedagogical-item__block">
-                                <h4>Progression &amp; Compétences</h4>
+                        <div class="log__grid">
+                            <div class="log__block">
+                                <h3>Progression &amp; Compétences</h3>
                                 <p>Utilisation d'un workflow moderne (Vite, Sass) et méthodologie BEM.</p>
                             </div>
-                            <div class="pedagogical-item__block">
-                                <h4>Erreurs &amp; Solutions</h4>
+                            <div class="log__block">
+                                <h3>Erreurs &amp; Solutions</h3>
                                 <p><strong>Problème :</strong> Architecture CSS initiale trop monolithique.</p>
-                                <p><strong>Solution :</strong> Découpage en modules SCSS pour une meilleure maintenance.</p>
+                                <p><strong>Solution :</strong> Découpage en modules SCSS pour une meilleure maintenance.
+                                </p>
                             </div>
                         </div>
-                    </div>
-
+                    </article>
                 </div>
-            </section>
-        </main>
 
-        <footer class="footer">
-            <div class="container">
-                <div class="footer__socials">
-                    <a href="https://www.linkedin.com/in/baye-niang-677981" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://github.com/niangb510" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                    <a href="mailto:niangaffou@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
-                </div>
+                <a class="backlink" href="/#accueil"><span aria-hidden="true">←</span> Retour à l'accueil</a>
             </div>
-        </footer>
-    </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer__inner">
+            <p>© 2026 N'Baye Niang</p>
+            <a href="#top">Retour en haut ↑</a>
+        </div>
+    </footer>
+
     <script type="module" src="/src/scripts/main.js"></script>
 </body>
 

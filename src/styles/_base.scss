@@ -8,60 +8,33 @@
 
 html {
     scroll-behavior: smooth;
+    background-color: $black;
+    color-scheme: dark;
 }
 
 body {
     font-family: $font-main;
-    background-color: rgba(248, 250, 252, 0.90);
-    color: $text-light;
-    line-height: 1.6;
-    transition: $transition;
+    font-size: 1rem;
+    line-height: 1.65;
+    background-color: $black;
+    color: $text;
+    overflow-x: hidden;
 }
 
-html.dark-mode body {
-    background-color: rgba(2, 6, 23, 0.85);
-    color: $text-dark;
+::selection {
+    background: $accent;
+    color: $accent-ink;
 }
 
-
-
-.container {
-    max-width: $container-width;
-    margin: 0 auto;
-    padding: 0 2rem;
-}
-
-.section-padding {
-    padding: 6rem 0;
-}
-
-.section-title {
-    font-family: $font-heading;
-    font-size: 2.5rem;
-    font-weight: 800;
-    margin-bottom: 3rem;
-    text-align: center;
-    position: relative;
-
-    &::after {
-        content: '';
-        display: block;
-        width: 60px;
-        height: 4px;
-        background-color: $primary;
-        margin: 1rem auto 0;
-        border-radius: 2px;
-    }
-}
-
-.hidden {
-    display: none !important;
+:focus-visible {
+    outline: 2px solid $accent;
+    outline-offset: 3px;
 }
 
 a {
-    text-decoration: none;
     color: inherit;
-    transition: $transition;
+    text-decoration: none;
+    transition: color $transition, border-color $transition, background-color $transition;
 }
 
 ul {
@@ -69,90 +42,151 @@ ul {
 }
 
 img {
+    display: block;
     max-width: 100%;
     height: auto;
 }
 
+button {
+    font: inherit;
+}
+
+.container {
+    width: 100%;
+    max-width: $container-width;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+@media (max-width: $mobile) {
+    .container {
+        padding: 0 1.25rem;
+    }
+}
+
+main {
+    padding-top: $header-height;
+}
+
+section[id] {
+    scroll-margin-top: calc(#{$header-height} + 1.5rem);
+}
+
+.skip-link {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    z-index: 2000;
+    padding: 0.75rem 1rem;
+    background: $accent;
+    color: $accent-ink;
+    font-family: $font-mono;
+    font-size: 0.75rem;
+
+    &:focus {
+        left: 1rem;
+        top: 1rem;
+    }
+}
+
+// Typographie terminal
+.mono {
+    font-family: $font-mono;
+}
+
+.label {
+    margin-bottom: 1.1rem;
+    font-family: $font-mono;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    color: $faint;
+}
+
+.label__mark {
+    color: $accent;
+}
+
+.section {
+    padding-top: 5.5rem;
+
+    @media (max-width: $tablet) {
+        padding-top: 4rem;
+    }
+}
+
+.section__title {
+    font-family: $font-mono;
+    font-size: clamp(1.6rem, 3vw, 2.125rem);
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: -0.03em;
+    color: $text-strong;
+}
+
+.section__intro {
+    max-width: 46rem;
+    margin-top: 1.5rem;
+    font-size: 1rem;
+    line-height: 1.7;
+    color: $muted;
+}
+
+// Boutons
 .btn {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
-    padding: 0.75rem 1.5rem;
-    border-radius: 0.5rem;
-    font-weight: 600;
+    justify-content: center;
+    gap: 0.55rem;
+    min-height: 46px;
+    padding: 0 1.5rem;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    font-family: $font-mono;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
     cursor: pointer;
-    transition: $transition;
-    border: none;
-    font-family: $font-main;
+    transition: background-color $transition, border-color $transition, color $transition;
 
-    &--primary {
-        background-color: $primary;
-        color: white;
-
-        &:hover {
-            background-color: $primary-dark;
-            transform: translateY(-2px);
-        }
-    }
-
-    &--secondary {
-        background-color: transparent;
-        border: 2px solid $primary;
-        color: $primary;
-
-        &:hover {
-            background-color: rgba($primary, 0.1);
-            transform: translateY(-2px);
-        }
+    span[aria-hidden='true'] {
+        color: inherit;
     }
 }
 
-// Animations
-.reveal {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+.btn--primary {
+    background: $accent;
+    color: $accent-ink;
 
-    &.active {
-        opacity: 1;
-        transform: translateY(0);
+    &:hover {
+        background: $accent-hover;
     }
 }
 
-// GSAP Dynamic Text Styles
-.split-line {
-    overflow: hidden;
-    display: block;
+.btn--ghost {
+    border-color: $line-strong;
+    color: $text;
+
+    &:hover {
+        border-color: $accent;
+        color: $accent;
+    }
 }
 
-.split-char {
+// Curseur de terminal
+.cursor {
     display: inline-block;
-    will-change: transform, opacity;
+    width: 0.45em;
+    height: 0.95em;
+    margin-left: 0.35em;
+    background: $accent;
+    vertical-align: -0.12em;
+    animation: cursor-blink 1.1s steps(1) infinite;
 }
 
-.parallax-container {
-    perspective: 1000px;
-    overflow: visible;
-}
-
-.hero__title {
-
-    // Styling for the outlined effect inspired by Van Holtz
-    &.outline {
-        -webkit-text-stroke: 1px currentColor;
-        color: transparent;
-        transition: color 0.5s ease;
-
-        &.active {
-            color: $primary;
-            -webkit-text-stroke: 0;
-        }
+@keyframes cursor-blink {
+    50% {
+        opacity: 0;
     }
-}
-
-.magnetic-wrap {
-    display: inline-block;
-    transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -160,10 +194,7 @@ img {
         scroll-behavior: auto;
     }
 
-    .reveal,
-    .reveal.active {
-        opacity: 1;
-        transform: none;
-        transition: none;
+    .cursor {
+        animation: none;
     }
 }

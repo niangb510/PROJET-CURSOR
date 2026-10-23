@@ -1,26 +1,29 @@
-// Premium Colors
-$primary: #6d28d9; // Electric Purple
-$primary-dark: #4c1d95;
-$secondary: #94a3b8;
-$accent: #0ea5e9; // Cyan
-$bg-light: #e2e8f0; // Gris clair un peu plus sombre
-$bg-dark: #020617; // Deep Midnight
-$text-light: #0f172a;
-$text-dark: #f8fafc;
-$card-bg-light: rgba(255, 255, 255, 0.7);
-$card-bg-dark: rgba(15, 23, 42, 0.6); // Glassmorphism dark
-$border-light: rgba(226, 232, 240, 0.5);
-$border-dark: rgba(51, 65, 85, 0.5);
+// Terminal palette
+$black: #000000;
+$panel: #070707;
+$panel-soft: #0b0b0b;
+$line: #1c1c1c;
+$line-strong: #2a2a2a;
+$text: #e9e9e7;
+$text-strong: #f4f4f2;
+$muted: #a6a6a6;
+$faint: #858585;
+$accent: #ff5a5a;
+$accent-hover: #ff7b7b;
+$accent-ink: #1a0707;
+$available: #45e08b;
 
 // Typography
-$font-main: 'Inter', sans-serif;
-$font-heading: 'Outfit', sans-serif;
+$font-main: 'Inter', 'Segoe UI', system-ui, sans-serif;
+$font-mono: 'JetBrains Mono', 'Cascadia Mono', Consolas, monospace;
 
-// Transitions
-$transition: all 0.3s ease;
+// Layout
+$container-width: 1264px; // 1200px de contenu + 2 x 2rem de padding
+$header-height: 72px;
+$radius: 4px;
+$transition: 0.2s ease;
 
 // Breakpoints
-$mobile: 480px;
-$tablet: 768px;
+$mobile: 560px;
+$tablet: 900px;
 $desktop: 1024px;
-$container-width: 1200px;
